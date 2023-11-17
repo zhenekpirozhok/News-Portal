@@ -29,8 +29,8 @@ public class NewsController {
     }
 
     @GetMapping("/titles")
-    public ResponseEntity<List<NewsTitleDto>> getAllNewsTitles() {
-        List<NewsTitleDto> titles = newsService.getAllNewsTitles();
+    public ResponseEntity<List<String>> getAllNewsTitles() {
+        List<String> titles = newsService.getAllNewsTitles();
         return ResponseEntity.ok(titles);
     }
 

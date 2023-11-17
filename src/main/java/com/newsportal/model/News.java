@@ -13,6 +13,9 @@ public class News {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "content")
+    private String content;
+
     public Long getId() {
         return id;
     }
@@ -37,8 +40,7 @@ public class News {
         this.content = content;
     }
 
-    @Column(name = "content")
-    private String content;
+
 
 
 }

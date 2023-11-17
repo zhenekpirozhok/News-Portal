@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface NewsRepository extends JpaRepository<News, Long> {
-    @Query("SELECT new com.newsportal.dto.NewsTitleDto(n.title) FROM News n")
-    List<NewsTitleDto> findAllTitles();
+    @Query("SELECT n.title FROM News n")
+    List<String> findAllTitles();
 }
