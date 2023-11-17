@@ -1,5 +1,6 @@
 package com.newsportal.controller;
 
+import com.newsportal.dto.NewsTitleDto;
 import com.newsportal.model.News;
 import com.newsportal.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,12 @@ public class NewsController {
         return ResponseEntity.ok(news);
     }
 
+    @GetMapping("/titles")
+    public ResponseEntity<List<NewsTitleDto>> getAllNewsTitles() {
+        List<NewsTitleDto> titles = newsService.getAllNewsTitles();
+        return ResponseEntity.ok(titles);
+    }
+
     // Другие методы
+
 }

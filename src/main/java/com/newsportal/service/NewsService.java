@@ -1,5 +1,6 @@
 package com.newsportal.service;
 
+import com.newsportal.dto.NewsTitleDto;
 import com.newsportal.model.News;
 import com.newsportal.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,10 @@ public class NewsService {
 
     public List<News> getAllNews() {
         return newsRepository.findAll();
+    }
+
+    public List<NewsTitleDto> getAllNewsTitles() {
+        return newsRepository.findAllTitles();
     }
 
     // Другие методы
