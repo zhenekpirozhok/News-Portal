@@ -2,38 +2,18 @@
 import React from 'react';
 import Header from '../components/Header/Header';
 import MainNews from '../components/MainNews/MainNews';
+import categories from '../mockData/categories.json';
+import users from '../mockData/users.json';
+import news from '../mockData/news.json';
+import NewsList from '../components/NewsList/NewsList';
 
 const HomePage = () => {
-  const user = {
-    username: 'Username',
-    password: 'admin',
-  }
-
-  const categories = [
-    {
-      name: 'Category 1',
-      id: 1
-    },
-    {
-      name: 'Category 2',
-      id: 2
-    },
-    {
-      name: 'Category 3',
-      id: 3
-    }
-  ]
-
-  const mainNews = {
-    title: 'Global Summit Boosts Tech Innovation',
-    category: 'Events',
-    image: '/images/syrniki.jfif',
-  }
-
   return (
     <div>
-      <Header user={user} isSearchVisible={false} categories={categories}/>
-      <MainNews news={mainNews}/>
+      <Header user={null} isSearchVisible={false} categories={categories}/>
+      <MainNews news={news[0]}/>
+      <NewsList newsList={news.slice(0, 4)} category={categories[0]} />
+      <NewsList newsList={news.slice(0, 4)} category={categories[1]} />
     </div>
   );
 };

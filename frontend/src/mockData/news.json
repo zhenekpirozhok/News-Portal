@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Global Summit Boosts Tech Innovation",
+    "category": "EVENTS",
+    "image": "/images/syrniki.jfif"
+  },
+  {
+    "title": "Some news happened",
+    "category": "ANNOUNCEMENTS",
+    "image": "/images/syrniki.jfif"
+  },
+  {
+    "title": "Lorem Ipsum Dolor Sit Amet",
+    "category": "Technology",
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "title": "Consectetur Adipiscing Elit",
+    "category": "Sports",
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "title": "Pellentesque Egestas Ullamcorper",
+    "category": "Science",
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "title": "Vivamus Eu Eros Inceptos",
+    "category": "Entertainment",
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "title": "Fusce Porttitor Tellus Vehicula",
+    "category": "Business",
+    "image": "https://placekitten.com/800/400"
+  }
+]
