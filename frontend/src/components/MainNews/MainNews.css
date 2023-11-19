@@ -1,0 +1,18 @@
+.main-news {
+    padding: 2.5rem 4rem;
+}
+
+.main-news-image {
+    padding: 0 4rem;
+}
+
+.main-news-title {
+    font-size: 2.2rem;
+    overflow-wrap: break-word;
+}
+
+.main-news-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

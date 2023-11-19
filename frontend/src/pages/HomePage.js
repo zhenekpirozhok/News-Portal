@@ -1,6 +1,7 @@
 // Header.js
 import React from 'react';
 import Header from '../components/Header/Header';
+import MainNews from '../components/MainNews/MainNews';
 
 const HomePage = () => {
   const user = {
@@ -23,9 +24,16 @@ const HomePage = () => {
     }
   ]
 
+  const mainNews = {
+    title: 'Global Summit Boosts Tech Innovation',
+    category: 'Events',
+    image: '/images/syrniki.jfif',
+  }
+
   return (
     <div>
       <Header user={user} isSearchVisible={false} categories={categories}/>
+      <MainNews news={mainNews}/>
     </div>
   );
 };

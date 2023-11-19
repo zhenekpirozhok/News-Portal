@@ -1,6 +1,7 @@
 /* Set global font family */
 body {
   font-family: 'Inter', sans-serif;
+  font-size: 14px;
 }
 
 /* Define main colors */
