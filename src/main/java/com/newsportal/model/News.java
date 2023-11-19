@@ -192,6 +192,7 @@ public class News {
         return updatedAt;
     }
 
+
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
