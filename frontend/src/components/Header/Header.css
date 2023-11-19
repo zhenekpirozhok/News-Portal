@@ -1,6 +1,6 @@
 /* Header.css */
 .header-container {
-  background: rgba(33, 54, 78, 0.94);
+  background: var(--primary-color);
   color: #fff;
   padding: 2.5rem 4rem; 
   align-items: center;
@@ -11,6 +11,15 @@
   text-decoration: none;
   white-space: nowrap;
 }
+
+.header-container a:hover {
+  text-decoration: underline;
+}
+
+.header-container a.active {
+  font-weight: bold;
+}
+
 
 
 

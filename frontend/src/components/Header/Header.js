@@ -4,6 +4,7 @@ import { Input, Flex } from "antd";
 import "./Header.css"; // Import the CSS file
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = ({ user, isSearchVisible, categories }) => {
   const items = categories.map((category) => ({
@@ -13,18 +14,20 @@ const Header = ({ user, isSearchVisible, categories }) => {
     key: category.id,
   }));
 
+  const location = useLocation();
+
   return (
     <Flex justify="space-between" align="center" className="header-container">
       {/* Flex-box with links */}
       <Flex className="header-links" gap={100}>
-        <a href="/news">News</a>
+        <Link to="/news" className={location.pathname === '/news' ? 'active' : ''}>News</Link>
         <Dropdown menu={{ items }}>
-          <a href="/categories">
+          <Link to="/categories" className={location.pathname === '/categories' ? 'active' : ''}>
             <Space>
               Categories
               <DownOutlined />
             </Space>
-          </a>
+          </Link>
         </Dropdown>
       </Flex>
 
