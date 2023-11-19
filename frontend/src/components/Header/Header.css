@@ -1,0 +1,16 @@
+/* Header.css */
+.header-container {
+  background: rgba(33, 54, 78, 0.94);
+  color: #fff;
+  padding: 2.5rem 4rem; 
+  align-items: center;
+}
+
+.header-container a {
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+
+
