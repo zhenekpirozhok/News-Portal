@@ -1,0 +1,9 @@
+/* Footer.css */
+.footer-container {
+  background-color: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
