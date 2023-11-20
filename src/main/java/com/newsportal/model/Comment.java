@@ -1,51 +1,35 @@
 package com.newsportal.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "comments")
+@Table(name = "comment")
 public class Comment {
 
-    public Comment(Long id, Long newsId, Long userId, String content, String statusId, Long updatedBy, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.id = id;
-        this.newsId = newsId;
-        this.userId = userId;
-        this.content = content;
-        this.statusId = statusId;
-        this.updatedBy = updatedBy;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
-    public Comment() {
-    }
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_id")
     private Long id;
 
-    @Column(name = "news_id", nullable = false)
-    private Long newsId;
+    @Column(name = "news_id")
+    private long newsId;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @Column(name = "user_id")
+    private long userId;
 
-    @Column(name = "content", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "content")
     private String content;
 
-    @Column(name = "status_id", length = 50)
-    private String statusId;
+    @Column(name = "status_id")
+    private long statusId;
 
     @Column(name = "updated_by")
-    private Long updatedBy;
+    private long updatedBy;
 
-    @Column(name = "created_at", updatable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
+    @Column(name = "created_at")
+    private String createdAt;
 
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt = LocalDateTime.now();
+    private String updatedAt;
 
     public Long getId() {
         return id;
@@ -55,19 +39,19 @@ public class Comment {
         this.id = id;
     }
 
-    public Long getNewsId() {
+    public long getNewsId() {
         return newsId;
     }
 
-    public void setNewsId(Long newsId) {
+    public void setNewsId(long newsId) {
         this.newsId = newsId;
     }
 
-    public Long getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
@@ -79,35 +63,35 @@ public class Comment {
         this.content = content;
     }
 
-    public String getStatusId() {
+    public long getStatusId() {
         return statusId;
     }
 
-    public void setStatusId(String statusId) {
+    public void setStatusId(long statusId) {
         this.statusId = statusId;
     }
 
-    public Long getUpdatedBy() {
+    public long getUpdatedBy() {
         return updatedBy;
     }
 
-    public void setUpdatedBy(Long updatedBy) {
+    public void setUpdatedBy(long updatedBy) {
         this.updatedBy = updatedBy;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
+    public String getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
+    public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
 }

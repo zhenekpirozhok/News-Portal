@@ -2,71 +2,52 @@ package com.newsportal.model;
 
 import jakarta.persistence.*;
 
-import java.util.Objects;
-
 @Entity
-@Table(name = "news_tags")
+@Table(name = "news_tag")
 public class NewsTag {
 
-    @EmbeddedId
-    private NewsTagsId id;
+    @Id
+    @Column(name = "link_id")
+    private Long id;
 
-    public NewsTag(NewsTagsId id) {
-        this.id = id;
-    }
+    @Column(name = "news_id")
+    private long newsId;
 
-    public NewsTagsId getId() {
+    @Column(name = "tag_id")
+    private long tagId;
+
+    @Column(name = "main_tag")
+    private long mainTag;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(NewsTagsId id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
+    public long getNewsId() {
+        return newsId;
+    }
 
+    public void setNewsId(long newsId) {
+        this.newsId = newsId;
+    }
 
-    @Embeddable
-    public static class NewsTagsId implements java.io.Serializable {
-        @Column(name = "news_id", nullable = false)
-        private Long newsId;
+    public long getTagId() {
+        return tagId;
+    }
 
-        @Column(name = "tag_id", nullable = false)
-        private Long tagId;
+    public void setTagId(long tagId) {
+        this.tagId = tagId;
+    }
 
-        public NewsTagsId(Long newsId, Long tagId) {
-            this.newsId = newsId;
-            this.tagId = tagId;
-        }
+    public long getMainTag() {
+        return mainTag;
+    }
 
-        public Long getNewsId() {
-            return newsId;
-        }
-
-        public void setNewsId(Long newsId) {
-            this.newsId = newsId;
-        }
-
-        public Long getTagId() {
-            return tagId;
-        }
-
-        public void setTagId(Long tagId) {
-            this.tagId = tagId;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            NewsTagsId that = (NewsTagsId) o;
-            return Objects.equals(newsId, that.newsId) && Objects.equals(tagId, that.tagId);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(newsId, tagId);
-        }
-
-        // Конструкторы, геттеры, сеттеры, hashCode и equals
+    public void setMainTag(long mainTag) {
+        this.mainTag = mainTag;
     }
 }

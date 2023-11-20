@@ -2,40 +2,31 @@ package com.newsportal.dto;
 
 import java.time.LocalDateTime;
 
-public class NewsDTO {
+public class NewsInfoDTO {
+
     private Long authorUserId;
     private String title;
-    private String content;
     private String imageUrl;
     private Integer views;
     private LocalDateTime publicAt;
 
 
 
-
-
-    public NewsDTO(Long userId, String title, String content, String imageUrl, Integer views, LocalDateTime publicAt) {
-        this.authorUserId = userId;
+    public NewsInfoDTO(Long authorUserId, String title, String imageUrl, Integer views, LocalDateTime publicAt) {
+        this.authorUserId = authorUserId;
         this.title = title;
-        this.content = content;
         this.imageUrl = imageUrl;
         this.views = views;
         this.publicAt = publicAt;
+
     }
 
-    public String getContent() {
-        return content;
-    }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Long getAuthorUserId() {
+    public Long getUserId() {
         return authorUserId;
     }
 
-    public void setAuthorUserId(Long authorUserId) {
+    public void setUserId(Long authorUserId) {
         this.authorUserId = authorUserId;
     }
 
@@ -60,7 +51,7 @@ public class NewsDTO {
     }
 
     public void setViews(Integer views) {
-        this.views = views;
+        this.views = this.views;
     }
 
     public LocalDateTime getPublicAt() {

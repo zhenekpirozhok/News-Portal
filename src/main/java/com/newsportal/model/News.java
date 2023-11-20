@@ -1,6 +1,7 @@
-package com.newsportal.model; // Измените на ваш пакет
+package com.newsportal.model;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -8,57 +9,50 @@ import java.time.LocalDateTime;
 public class News {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "news_id")
     private Long id;
 
-    @Column(name = "user_id")
-    private Long userId;
+    @Column(name = "author_user_id")
+    private Long authorUserId;
 
-    @Column(name = "title", nullable = false, length = 255)
+    @Column(name = "title")
     private String title;
 
-    @Column(name = "content", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "content")
     private String content;
 
-    @Column(name = "image_url", length = 255)
+    @Column(name = "image_url")
     private String imageUrl;
 
-    @Column(name = "category_id")
-    private Integer categoryId;
-
     @Column(name = "is_main_news")
-    private Boolean isMainNews = false;
+    private int isMainNews;
 
     @Column(name = "priority")
-    private Integer priority = 0;
+    private int priority;
 
-    @Column(name = "views")
-    private Integer views = 0;
+    @Column(name = "views_on")
+    private int views;
 
     @Column(name = "likes")
-    private Integer likes = 0;
+    private int likes;
 
-    @Column(name = "dislikes")
-    private Integer dislikes = 0;
-
-    @Column(name = "status_id", length = 50)
-    private String statusId;
+    @Column(name = "status_id")
+    private long statusId;
 
     @Column(name = "public_at")
     private LocalDateTime publicAt;
 
     @Column(name = "unpublic_at")
-    private LocalDateTime unpublicAt;
+    private String unpublicAt;
 
     @Column(name = "updated_by")
-    private Long updatedBy;
+    private int updatedBy;
 
-    @Column(name = "created_at", updatable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
+    @Column(name = "created_at")
+    private String createdAt;
 
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt = LocalDateTime.now();
+    @Column(name = "update_at")
+    private String updateAt;
 
     public Long getId() {
         return id;
@@ -68,12 +62,12 @@ public class News {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getAuthorUserId() {
+        return authorUserId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setAuthorUserId(Long authorUserId) {
+        this.authorUserId = authorUserId;
     }
 
     public String getTitle() {
@@ -100,59 +94,43 @@ public class News {
         this.imageUrl = imageUrl;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public Boolean getMainNews() {
+    public int getIsMainNews() {
         return isMainNews;
     }
 
-    public void setMainNews(Boolean mainNews) {
-        isMainNews = mainNews;
+    public void setIsMainNews(int isMainNews) {
+        this.isMainNews = isMainNews;
     }
 
-    public Integer getPriority() {
+    public int getPriority() {
         return priority;
     }
 
-    public void setPriority(Integer priority) {
+    public void setPriority(int priority) {
         this.priority = priority;
     }
 
-    public Integer getViews() {
+    public int getViews() {
         return views;
     }
 
-    public void setViews(Integer views) {
+    public void setViews(int views) {
         this.views = views;
     }
 
-    public Integer getLikes() {
+    public int getLikes() {
         return likes;
     }
 
-    public void setLikes(Integer likes) {
+    public void setLikes(int likes) {
         this.likes = likes;
     }
 
-    public Integer getDislikes() {
-        return dislikes;
-    }
-
-    public void setDislikes(Integer dislikes) {
-        this.dislikes = dislikes;
-    }
-
-    public String getStatusId() {
+    public long getStatusId() {
         return statusId;
     }
 
-    public void setStatusId(String statusId) {
+    public void setStatusId(long statusId) {
         this.statusId = statusId;
     }
 
@@ -164,36 +142,35 @@ public class News {
         this.publicAt = publicAt;
     }
 
-    public LocalDateTime getUnpublicAt() {
+    public String getUnpublicAt() {
         return unpublicAt;
     }
 
-    public void setUnpublicAt(LocalDateTime unpublicAt) {
+    public void setUnpublicAt(String unpublicAt) {
         this.unpublicAt = unpublicAt;
     }
 
-    public Long getUpdatedBy() {
+    public int getUpdatedBy() {
         return updatedBy;
     }
 
-    public void setUpdatedBy(Long updatedBy) {
+    public void setUpdatedBy(int updatedBy) {
         this.updatedBy = updatedBy;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
+    public String getUpdateAt() {
+        return updateAt;
     }
 
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setUpdateAt(String updateAt) {
+        this.updateAt = updateAt;
     }
 }
