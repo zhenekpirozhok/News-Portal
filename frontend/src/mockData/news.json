@@ -1,37 +1,254 @@
 [
   {
+    "id": 1,
     "title": "Global Summit Boosts Tech Innovation",
-    "category": "EVENTS",
+    "category": {
+      "id": 1,
+      "name": "EVENTS"
+    },
     "image": "/images/syrniki.jfif"
   },
   {
+    "id": 2,
+    "title": "Another Event News",
+    "category": {
+      "id": 1,
+      "name": "EVENTS"
+    },
+    "image": "/images/syrniki.jfif"
+  },
+  {
+    "id": 3,
+    "title": "Yet Another Event News",
+    "category": {
+      "id": 1,
+      "name": "EVENTS"
+    },
+    "image": "/images/syrniki.jfif"
+  },
+  {
+    "id": 4,
+    "title": "Last Event News",
+    "category": {
+      "id": 1,
+      "name": "EVENTS"
+    },
+    "image": "/images/syrniki.jfif"
+  },
+  {
+    "id": 5,
     "title": "Some news happened",
-    "category": "ANNOUNCEMENTS",
+    "category": {
+      "id": 2,
+      "name": "ANNOUNCEMENTS"
+    },
     "image": "/images/syrniki.jfif"
   },
   {
+    "id": 6,
+    "title": "Another Announcement News",
+    "category": {
+      "id": 2,
+      "name": "ANNOUNCEMENTS"
+    },
+    "image": "/images/syrniki.jfif"
+  },
+  {
+    "id": 7,
+    "title": "Yet Another Announcement News",
+    "category": {
+      "id": 2,
+      "name": "ANNOUNCEMENTS"
+    },
+    "image": "/images/syrniki.jfif"
+  },
+  {
+    "id": 8,
+    "title": "Last Announcement News",
+    "category": {
+      "id": 2,
+      "name": "ANNOUNCEMENTS"
+    },
+    "image": "/images/syrniki.jfif"
+  },
+  {
+    "id": 9,
     "title": "Lorem Ipsum Dolor Sit Amet",
-    "category": "Technology",
+    "category": {
+      "id": 3,
+      "name": "Technology"
+    },
     "image": "https://placekitten.com/800/400"
   },
   {
+    "id": 10,
+    "title": "Another Technology News",
+    "category": {
+      "id": 3,
+      "name": "Technology"
+    },
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "id": 11,
+    "title": "Yet Another Technology News",
+    "category": {
+      "id": 3,
+      "name": "Technology"
+    },
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "id": 12,
+    "title": "Last Technology News",
+    "category": {
+      "id": 3,
+      "name": "Technology"
+    },
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "id": 13,
     "title": "Consectetur Adipiscing Elit",
-    "category": "Sports",
+    "category": {
+      "id": 4,
+      "name": "Sports"
+    },
     "image": "https://placekitten.com/800/400"
   },
   {
+    "id": 14,
+    "title": "Another Sports News",
+    "category": {
+      "id": 4,
+      "name": "Sports"
+    },
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "id": 15,
+    "title": "Yet Another Sports News",
+    "category": {
+      "id": 4,
+      "name": "Sports"
+    },
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "id": 16,
+    "title": "Last Sports News",
+    "category": {
+      "id": 4,
+      "name": "Sports"
+    },
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "id": 17,
     "title": "Pellentesque Egestas Ullamcorper",
-    "category": "Science",
+    "category": {
+      "id": 5,
+      "name": "Science"
+    },
     "image": "https://placekitten.com/800/400"
   },
   {
+    "id": 18,
+    "title": "Another Science News",
+    "category": {
+      "id": 5,
+      "name": "Science"
+    },
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "id": 19,
+    "title": "Yet Another Science News",
+    "category": {
+      "id": 5,
+      "name": "Science"
+    },
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "id": 20,
+    "title": "Last Science News",
+    "category": {
+      "id": 5,
+      "name": "Science"
+    },
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "id": 21,
     "title": "Vivamus Eu Eros Inceptos",
-    "category": "Entertainment",
+    "category": {
+    "id": 6,
+    "name": "Entertainment"
+    },
     "image": "https://placekitten.com/800/400"
   },
   {
+    "id": 22,
+    "title": "Another Entertainment News",
+    "category": {
+      "id": 6,
+      "name": "Entertainment"
+    },
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "id": 23,
+    "title": "Yet Another Entertainment News",
+    "category": {
+      "id": 6,
+      "name": "Entertainment"
+    },
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "id": 24,
+    "title": "Last Entertainment News",
+    "category": {
+      "id": 6,
+      "name": "Entertainment"
+    },
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "id": 25,
     "title": "Fusce Porttitor Tellus Vehicula",
-    "category": "Business",
+    "category": {
+      "id": 7,
+      "name": "Business"
+    },
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "id": 26,
+    "title": "Another Business News",
+    "category": {
+      "id": 7,
+      "name": "Business"
+    },
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "id": 27,
+    "title": "Yet Another Business News",
+    "category": {
+      "id": 7,
+      "name": "Business"
+    },
+    "image": "https://placekitten.com/800/400"
+  },
+  {
+    "id": 28,
+    "title": "Last Business News",
+    "category": {
+      "id": 7,
+      "name": "Business"
+    },
     "image": "https://placekitten.com/800/400"
   }
 ]

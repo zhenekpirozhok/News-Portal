@@ -5,6 +5,7 @@
 
 .news-row {
   margin: 0 -10px; /* Add negative margin to counteract the padding on the Row */
+  width: 100%;
 }
 
 /* Optional: Center the cards within each column */
@@ -14,7 +15,7 @@
 }
 
 .news-list-title {
-  font-size: 24px;
   text-transform: uppercase;
-  margin-left: 2.1rem;
+  padding-left: 2.1rem;
 }
+
