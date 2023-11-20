@@ -6,14 +6,12 @@ import users from '../mockData/users.json';
 import news from '../mockData/news.json';
 import NewsList from '../components/NewsList/NewsList';
 import Footer from '../components/Footer/Footer';
+import getCategories from '../mockData/categories';
 
 const HomePage = () => {
   const events = news.filter((news) => news.category.id === 1);
   const announcements = news.filter((news) => news.category.id === 2);
-  const categories = news.map((news) => news.category).filter(
-    (category, index, self) =>
-      self.findIndex((c) => c.id === category.id) === index
-  );
+  const categories = getCategories(news);
 
   return (
     <div>
