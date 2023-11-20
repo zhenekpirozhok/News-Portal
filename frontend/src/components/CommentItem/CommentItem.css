@@ -1,0 +1,20 @@
+.comment-header {
+    display: flex;
+}
+
+.comment-date {
+    padding-left: 30px;
+    font-size: 14px;
+}
+
+.comment-text {
+    font-size: 16px;
+    font-family: 'Inter';
+}
+
+.comment-line {
+    height: 1px;
+    background-color: black;
+    opacity: 20%;
+    margin-top: 30px;
+}

@@ -1,13 +1,14 @@
-import './App.css';
-import HomePage from './pages/HomePage';
-import { BrowserRouter as Router } from 'react-router-dom';
+import "./App.css";
+import HomePage from "./pages/HomePage";
+import OneNewsPage from "./pages/OneNewsPage";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
     <Router>
-    <div className="App">
-      <HomePage />
-    </div>
+      <div className="App">
+        <OneNewsPage />
+      </div>
     </Router>
   );
 }

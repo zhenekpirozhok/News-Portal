@@ -1,0 +1,13 @@
+.news-header-container {
+    margin-bottom: 20px;
+  }
+  
+  .news-date {
+    font-size: 14px;
+
+  }
+  
+  .news-title {
+    font-size: 40px;
+    font-weight: bold;
+  }

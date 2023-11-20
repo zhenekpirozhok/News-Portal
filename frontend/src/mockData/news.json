@@ -1,8 +1,12 @@
 [
   {
     "title": "Global Summit Boosts Tech Innovation",
+    "date": "02.11.2023",
     "category": "EVENTS",
-    "image": "/images/syrniki.jfif"
+    "image": "/images/syrniki.jfif",
+    "text": "Amidst the twilight, whispers of forgotten tales echo. Moonlight weaves dreams in the silken tapestry of the night, where stars dance to an ageless melody. Shadows linger, embracing secrets untold. The universe unfolds its cosmic symphony, inviting wanderers to explore the enigma of existence.",
+    "likes": "222",
+    "views": "10067"
   },
   {
     "title": "Some news happened",

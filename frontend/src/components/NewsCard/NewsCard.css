@@ -5,6 +5,6 @@
 }
 
 .news-card .ant-card-cover img {
-  height: 150px; /* Set a fixed height for the cover image */
-  object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+  height: 150px; 
+  object-fit: cover; 
 }

@@ -1,7 +1,6 @@
-// NewsSection.js
 import React from 'react';
 import { Row, Col, Tag } from 'antd';
-import NewsCard from '../NewsCard/NewsCard'; // Adjust the path based on your project structure
+import NewsCard from '../NewsCard/NewsCard';
 import './NewsList.css';
 
 

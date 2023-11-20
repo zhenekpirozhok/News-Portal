@@ -1,6 +1,6 @@
 // NewsCard.js
 import React from 'react';
-import { Card, Tag } from 'antd';
+import { Card } from 'antd';
 import './NewsCard.css';
 
 const NewsCard = ({ news }) => {
