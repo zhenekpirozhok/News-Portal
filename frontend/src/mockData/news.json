@@ -4,7 +4,7 @@
     "title": "Global Summit Boosts Tech Innovation",
     "category": {
       "id": 1,
-      "name": "EVENTS"
+      "name": "Events"
     },
     "image": "/images/syrniki.jfif"
   },
@@ -13,7 +13,7 @@
     "title": "Another Event News",
     "category": {
       "id": 1,
-      "name": "EVENTS"
+      "name": "Events"
     },
     "image": "/images/syrniki.jfif"
   },
@@ -22,7 +22,7 @@
     "title": "Yet Another Event News",
     "category": {
       "id": 1,
-      "name": "EVENTS"
+      "name": "Events"
     },
     "image": "/images/syrniki.jfif"
   },
@@ -31,7 +31,7 @@
     "title": "Last Event News",
     "category": {
       "id": 1,
-      "name": "EVENTS"
+      "name": "Events"
     },
     "image": "/images/syrniki.jfif"
   },
@@ -40,7 +40,7 @@
     "title": "Some news happened",
     "category": {
       "id": 2,
-      "name": "ANNOUNCEMENTS"
+      "name": "Announcements"
     },
     "image": "/images/syrniki.jfif"
   },
@@ -49,7 +49,7 @@
     "title": "Another Announcement News",
     "category": {
       "id": 2,
-      "name": "ANNOUNCEMENTS"
+      "name": "Announcements"
     },
     "image": "/images/syrniki.jfif"
   },
@@ -58,7 +58,7 @@
     "title": "Yet Another Announcement News",
     "category": {
       "id": 2,
-      "name": "ANNOUNCEMENTS"
+      "name": "Announcements"
     },
     "image": "/images/syrniki.jfif"
   },
@@ -67,7 +67,7 @@
     "title": "Last Announcement News",
     "category": {
       "id": 2,
-      "name": "ANNOUNCEMENTS"
+      "name": "Announcements"
     },
     "image": "/images/syrniki.jfif"
   },
