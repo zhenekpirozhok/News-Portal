@@ -23,7 +23,7 @@ const OneCategoryPage = () => {
       }}
     >
       <Header user={null} isSearchVisible={false} categories={categories} />
-      <NewsList newsList={newsList} />
+      <NewsList newsList={newsList} category={categories.find((c) => c.id === +categoryId)}/>
       <Footer />
     </div>
   );
