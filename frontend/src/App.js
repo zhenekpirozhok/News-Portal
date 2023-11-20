@@ -1,15 +1,20 @@
 import "./App.css";
 import HomePage from "./pages/HomePage";
-import OneNewsPage from "./pages/OneNewsPage";
-import { BrowserRouter as Router } from "react-router-dom";
+import CategoriesPage from "./pages/CategoriesPage";
+import OneCategoryPage from "./pages/OneCategoryPage";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <OneNewsPage />
-      </div>
-    </Router>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/categories" element={<CategoriesPage />} />
+          <Route path="/category/:categoryId" element={<OneCategoryPage />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
