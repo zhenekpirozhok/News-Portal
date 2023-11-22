@@ -23,7 +23,7 @@ public class NewsService {
         this.newsRepository = newsRepository;
     }
 
-   public List<NewsInfoDTO> getTop25News() {
+    public List<NewsInfoDTO> getTop25News() {
         return newsRepository.findTop25News(PageRequest.of(0, 25));
     }
 
@@ -48,7 +48,6 @@ public class NewsService {
     }
 
 
-
     public Page<NewsInfoDTO> getNewsByDate(LocalDate date) {
         LocalDateTime startOfDay = date.atStartOfDay();
         LocalDateTime endOfDay = date.plusDays(1).atStartOfDay();
@@ -57,8 +56,11 @@ public class NewsService {
     }
 
 
-   public NewsDTO getNewsById(Long newsId) {
+    public NewsDTO getNewsById(Long newsId) {
         return newsRepository.findNewsById(newsId);
     }
 
+    public Page<NewsInfoDTO> getNewsPage(Pageable pageable) {
+        return newsRepository.findNewsWithPagination(pageable);
+    }
 }

@@ -56,4 +56,11 @@ public interface NewsRepository extends JpaRepository<News, Long> {
      @Query("SELECT new com.newsportal.dto.NewsDTO(n.authorUserId, n.title, n.content, n.imageUrl, n.views, n.publicAt) " +
             "FROM News n WHERE n.id = :newsId")
     NewsDTO findNewsById(@Param("newsId") Long newsId);
+
+
+    //7. Загрузить еще
+    @Query("SELECT new com.newsportal.dto.NewsInfoDTO(n.authorUserId, n.title, n.imageUrl, n.views, n.publicAt) " +
+            "FROM News n " +
+            "ORDER BY n.publicAt DESC, n.priority DESC")
+    Page<NewsInfoDTO> findNewsWithPagination(Pageable pageable);
 }
