@@ -1,18 +1,8 @@
-/* NewsList.css */
-.news-list {
-  padding: 20px; /* Add padding to the entire NewsList component */
-}
-
 .news-row {
   margin: 0 -10px; /* Add negative margin to counteract the padding on the Row */
   width: 100%;
 }
 
-/* Optional: Center the cards within each column */
-.news-row .ant-col {
-  display: flex;
-  justify-content: center;
-}
 
 .news-list-title {
   text-transform: uppercase;
