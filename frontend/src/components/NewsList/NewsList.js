@@ -10,9 +10,9 @@ const NewsList = ({ category, newsList }) => {
       <h2 className="news-list-title">
         {category && <Tag color="blue">{category.name}</Tag>}
       </h2>
-      <Flex className="news-row" justify='space-between'>
+      <Flex className="news-row" justify='space-between' wrap='wrap'>
         {newsList.map((news) => (
-          <div key={news.id} xs={24} sm={12} md={6} span={8}>
+          <div key={news.id}>
             <NewsCard news={news} />
           </div>
         ))}
