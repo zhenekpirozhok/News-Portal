@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Tag } from 'antd';
+import { Row, Col, Tag } from 'antd';
 import NewsCard from '../NewsCard/NewsCard';
 import './NewsList.css';
 
@@ -10,13 +10,13 @@ const NewsList = ({ category, newsList }) => {
       <h2 className="news-list-title">
         {category && <Tag color="blue">{category.name}</Tag>}
       </h2>
-      <Flex className="news-row" justify='space-between' wrap='wrap'>
+      <Row className="news-row" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
         {newsList.map((news) => (
-          <div key={news.id}>
+          <Col key={news.id} xs={24} sm={12} md={6} span={8}>
             <NewsCard news={news} />
-          </div>
+          </Col>
         ))}
-      </Flex>
+      </Row>
     </div>
   );
 };

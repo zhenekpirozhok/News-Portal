@@ -8,6 +8,7 @@ import NewsList from "../components/NewsList/NewsList";
 import Footer from "../components/Footer/Footer";
 import getCategories from "../mockData/categories";
 import FilterPanel from "../components/FilterPanel/FilterPanel";
+import Section from "../components/Section/Section";
 
 const FilterPage = () => {
   const categories = getCategories(news);
@@ -23,8 +24,10 @@ const FilterPage = () => {
   return (
     <div>
       <Header user={null} isSearchVisible={false} categories={categories} />
-      <FilterPanel />
+      <Section>
+      <FilterPanel onDateFilterChange={onDateFilterChange} onNewsPerPageChange={onNewsPerPageChange}/>
       <NewsList newsList={news} />
+      </Section>
       <Footer />
     </div>
   );

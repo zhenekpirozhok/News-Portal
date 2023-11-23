@@ -1,34 +1,45 @@
-import React from 'react';
-import { Flex } from 'antd';
-import { DatePicker, Space } from 'antd';
+import React from "react";
+import { Flex } from "antd";
+import { DatePicker, Select } from "antd";
+import "./FilterPanel.css";
 
 const FilterPanel = ({ onDateFilterChange, onNewsPerPageChange }) => {
-  const handleDateFilterChange = (e) => {
-    const selectedDate = e.target.value;
-    onDateFilterChange(selectedDate);
+  const handleDateFilterChange = (date, dateString) => {
+    onDateFilterChange(dateString);
   };
 
-  const handleNewsPerPageChange = (e) => {
-    const selectedNewsPerPage = e.target.value;
-    onNewsPerPageChange(selectedNewsPerPage);
+  const handleNewsPerPageChange = (value) => {
+    onNewsPerPageChange(value);
   };
 
   return (
-    <Flex className="filter-panel">
+    <Flex className="filter-panel" align="center" gap={50}>
       <h3>Filters</h3>
-      <div className="filter-section">
+      <Flex className="filter-section" gap={10} align="center">
         <label>Date:</label>
         <DatePicker onChange={handleDateFilterChange} />
-      </div>
-      <div className="filter-section">
+      </Flex>
+      <Flex className="filter-section" gap={10} align="center">
         <label>News per Page:</label>
-        <select onChange={handleNewsPerPageChange}>
-          {/* Options for news per page */}
-          <option value="24">24</option>
-          <option value="48">48</option>
-          <option value="96">96</option>
-        </select>
-      </div>
+        <Select
+          defaultValue="10"
+          onChange={handleNewsPerPageChange}
+          options={[
+            {
+              label: "10",
+              value: 10,
+            },
+            {
+              label: "20",
+              value: 20,
+            },
+            {
+              label: "30",
+              value: 30,
+            },
+          ]}
+        />
+      </Flex>
     </Flex>
   );
 };
