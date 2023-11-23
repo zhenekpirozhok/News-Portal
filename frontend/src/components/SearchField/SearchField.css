@@ -1,0 +1,25 @@
+.search-field-container {
+    margin-bottom: 20px;
+  }
+  
+  .search-title {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .search-input-container {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    margin-bottom: 50px;
+  }
+  
+  .search-input {
+    flex: 1;
+    margin-right: 8px;
+  }
+  
+  .search-button {
+    margin-left: 8px;
+    background-color: black;
+  }

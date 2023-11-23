@@ -3,6 +3,12 @@
   width: 100%;
 }
 
+/* Optional: Center the cards within each column */
+.news-row .ant-col {
+  display: flex;
+
+}
+
 .news-list-title {
   text-transform: uppercase;
 }

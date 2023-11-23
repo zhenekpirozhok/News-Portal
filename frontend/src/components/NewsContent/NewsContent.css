@@ -20,8 +20,9 @@ span {
 }
 
 .tag{
-    margin-top: 60px;
-    font-size: 40px;
+    margin-top: 30px;
+    font-size: 15px;
+    font-weight: 700;
     text-transform: uppercase;
     margin-left: 3px; 
 }
