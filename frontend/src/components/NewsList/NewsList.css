@@ -11,7 +11,7 @@
 /* Optional: Center the cards within each column */
 .news-row .ant-col {
   display: flex;
-  justify-content: center;
+
 }
 
 .news-list-title {

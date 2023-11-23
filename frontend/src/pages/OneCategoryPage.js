@@ -7,6 +7,7 @@ import Category from "../components/Category/Category";
 import { Link, useParams } from "react-router-dom";
 import NewsList from "../components/NewsList/NewsList";
 import getCategories from "../mockData/categories";
+import Section from "../components/Section/Section";
 
 const OneCategoryPage = () => {
   const { categoryId } = useParams();
@@ -23,7 +24,9 @@ const OneCategoryPage = () => {
       }}
     >
       <Header user={null} isSearchVisible={false} categories={categories} />
-      <NewsList newsList={newsList} category={categories.find((c) => c.id === +categoryId)}/>
+      <Section>
+        <NewsList newsList={newsList} category={categories.find((c) => c.id === +categoryId)}/>
+      </Section>
       <Footer />
     </div>
   );
