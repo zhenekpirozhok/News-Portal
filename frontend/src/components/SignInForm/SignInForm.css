@@ -1,0 +1,29 @@
+.signin-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: white;
+  }
+
+.signin-form {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .signin-form-button {
+    width: 100%;
+    background-color: black;
+  }
+  
+  .signin-form-forgot {
+    float: right;
+  }
+  
+  .signin-form-button-wrapper {
+    margin-top: 10px;
+  }
