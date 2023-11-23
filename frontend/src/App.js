@@ -13,7 +13,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/categories" element={<OneNewsPage />} />
+          <Route path="/categories" element={<CategoriesPage />} />
+          <Route path="/news/:newsId" element={<OneNewsPage />} />
           <Route path="/category/:categoryId" element={<OneCategoryPage />} />
           <Route path="/search" element={<SearchPage />}/>
           <Route path="/filter" element={<FilterPage />} />
