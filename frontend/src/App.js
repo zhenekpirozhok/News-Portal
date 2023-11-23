@@ -17,7 +17,7 @@ function App() {
           <Route path="/news/:newsId" element={<OneNewsPage />} />
           <Route path="/category/:categoryId" element={<OneCategoryPage />} />
           <Route path="/search" element={<SearchPage />}/>
-          <Route path="/filter" element={<FilterPage />} />
+          <Route path="/news" element={<FilterPage />} />
         </Routes>
       </Router>
     </div>
