@@ -2,6 +2,7 @@ package com.newsportal.controller;
 
 import com.newsportal.dto.NewsDTO;
 import com.newsportal.dto.NewsInfoDTO;
+import com.newsportal.model.News;
 import com.newsportal.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -79,4 +80,9 @@ public class NewsController {
         return ResponseEntity.ok("Comment created successfully");
     }
 
+    @GetMapping("/search/{keyword}")
+    public ResponseEntity<List<News>> searchNews(@PathVariable String keyword) {
+        List<News> searchResults = newsService.searchNews(keyword);
+        return ResponseEntity.ok(searchResults);
+    }
 }

@@ -63,4 +63,12 @@ public interface NewsRepository extends JpaRepository<News, Long> {
             "FROM News n " +
             "ORDER BY n.publicAt DESC, n.priority DESC")
     Page<NewsInfoDTO> findNewsWithPagination(Pageable pageable);
-}
+
+    @Query("SELECT n FROM News n " +
+            "JOIN User u ON n.authorUserId = u.id " +
+            "WHERE " +
+            "LOWER(u.username) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
+            "LOWER(n.title) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
+            "LOWER(n.content) LIKE LOWER(CONCAT('%', :keyword, '%'))")
+    List<News> search(@Param("keyword") String keyword);
+    }

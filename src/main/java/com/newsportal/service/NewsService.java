@@ -62,6 +62,10 @@ public class NewsService {
         return newsRepository.findNewsById(newsId);
     }
 
+    public List<News> searchNews(String keyword) {
+        return newsRepository.search(keyword);
+    }
+
     public Page<NewsInfoDTO> getNewsPage(Pageable pageable) {
         return newsRepository.findNewsWithPagination(pageable);
     }
