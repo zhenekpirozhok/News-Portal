@@ -3,6 +3,7 @@ package com.newsportal.service;
 import com.newsportal.dto.CommentDTO;
 import com.newsportal.model.Comment;
 import com.newsportal.repository.CommentRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +18,10 @@ public class CommentService {
 
     public List<CommentDTO> getCommentsByNewsId(Long newsId) {
         return commentRepository.findByNewsId(newsId).stream()
-                .map(comment -> new CommentDTO(comment.getUserId(), comment.getContent(), comment.getCreatedAt()))
+                .map(comment -> new CommentDTO(comment.getUserId(), newsId ,comment.getContent(), comment.getCreatedAt()))
                 .collect(Collectors.toList());
     }
-
+    @Transactional
     public void createComment(Long userId, Long newsId, String content) {
         Comment comment = new Comment();
         comment.setUserId(userId);

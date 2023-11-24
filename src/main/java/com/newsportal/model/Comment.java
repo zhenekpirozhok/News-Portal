@@ -1,12 +1,17 @@
 package com.newsportal.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.Instant;
 
 @Entity
 @Table(name = "comment")
 public class Comment {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "comment_id")
     private Long id;
 
@@ -26,10 +31,12 @@ public class Comment {
     private long updatedBy;
 
     @Column(name = "created_at")
-    private String createdAt;
+    @CreationTimestamp
+    private Instant createdAt;
 
     @Column(name = "updated_at")
-    private String updatedAt;
+    @UpdateTimestamp
+    private Instant updatedAt;
 
     public Long getId() {
         return id;
@@ -63,12 +70,12 @@ public class Comment {
         this.content = content;
     }
 
-    public long getStatusId() {
+    public long getStatusID() {
         return statusId;
     }
 
-    public void setStatusId(long statusId) {
-        this.statusId = statusId;
+    public void setStatusID(long statusID) {
+        this.statusId = statusID;
     }
 
     public long getUpdatedBy() {
@@ -79,19 +86,20 @@ public class Comment {
         this.updatedBy = updatedBy;
     }
 
-    public String getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 
-    public String getUpdatedAt() {
+    public Instant getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
 }
+

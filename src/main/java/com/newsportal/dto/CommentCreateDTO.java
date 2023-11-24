@@ -1,22 +1,18 @@
 package com.newsportal.dto;
 
-import java.time.Instant;
-
-public class CommentDTO {
+public class CommentCreateDTO {
     private Long userId;
     private Long newsId;
     private String content;
-    private Instant createdAt;
 
 
-
-
-    public CommentDTO(Long userId, Long newsId, String content, Instant createdAt) {
+    public CommentCreateDTO(Long userId, Long newsId, String content) {
         this.userId = userId;
         this.newsId = newsId;
         this.content = content;
-        this.createdAt = createdAt;
+
     }
+
 
     public Long getUserId() {
         return userId;
@@ -42,11 +38,5 @@ public class CommentDTO {
         this.content = content;
     }
 
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
 
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
 }

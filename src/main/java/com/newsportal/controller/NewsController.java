@@ -71,4 +71,11 @@ public class NewsController {
         List<NewsInfoDTO> newsList = newsPage.getContent();
         return ResponseEntity.ok(newsList);
     }
+
+    @PostMapping("/create")
+    public ResponseEntity<String> createNews(@RequestBody NewsDTO newsDTO) {
+        newsService.createNews(newsDTO.getAuthorUserId(), newsDTO.getTitle(), newsDTO.getContent(), newsDTO.getImageUrl());
+        return ResponseEntity.ok("Comment created successfully");
+    }
+
 }
