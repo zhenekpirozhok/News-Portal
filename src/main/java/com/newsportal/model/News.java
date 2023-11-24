@@ -1,14 +1,17 @@
 package com.newsportal.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Entity
 @Table(name = "news")
 public class News {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "news_id")
     private Long id;
 
@@ -37,22 +40,25 @@ public class News {
     private int likes;
 
     @Column(name = "status_id")
-    private long statusId;
+    private Long statusId;
 
     @Column(name = "public_at")
-    private LocalDateTime publicAt;
+    @CreationTimestamp
+    private Instant publicAt;
 
     @Column(name = "unpublic_at")
-    private String unpublicAt;
+    private Instant unpublicAt;
 
-    @Column(name = "updated_by")
-    private int updatedBy;
+    @Column(name = "updated_by_user_id")
+    private Long updatedBy;
 
     @Column(name = "created_at")
-    private String createdAt;
+    @CreationTimestamp
+    private Instant createdAt;
 
-    @Column(name = "update_at")
-    private String updateAt;
+    @Column(name = "updated_at")
+    @UpdateTimestamp
+    private Instant updatedAt;
 
     public Long getId() {
         return id;
@@ -126,51 +132,51 @@ public class News {
         this.likes = likes;
     }
 
-    public long getStatusId() {
+    public Long getStatusId() {
         return statusId;
     }
 
-    public void setStatusId(long statusId) {
+    public void setStatusId(Long statusId) {
         this.statusId = statusId;
     }
 
-    public LocalDateTime getPublicAt() {
+    public Instant getPublicAt() {
         return publicAt;
     }
 
-    public void setPublicAt(LocalDateTime publicAt) {
+    public void setPublicAt(Instant publicAt) {
         this.publicAt = publicAt;
     }
 
-    public String getUnpublicAt() {
+    public Instant getUnpublicAt() {
         return unpublicAt;
     }
 
-    public void setUnpublicAt(String unpublicAt) {
+    public void setUnpublicAt(Instant unpublicAt) {
         this.unpublicAt = unpublicAt;
     }
 
-    public int getUpdatedBy() {
+    public Long getUpdatedBy() {
         return updatedBy;
     }
 
-    public void setUpdatedBy(int updatedBy) {
+    public void setUpdatedBy(Long updatedBy) {
         this.updatedBy = updatedBy;
     }
 
-    public String getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 
-    public String getUpdateAt() {
-        return updateAt;
+    public Instant getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdateAt(String updateAt) {
-        this.updateAt = updateAt;
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

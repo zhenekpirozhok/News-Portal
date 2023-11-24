@@ -2,7 +2,9 @@ package com.newsportal.service;
 
 import com.newsportal.dto.NewsDTO;
 import com.newsportal.dto.NewsInfoDTO;
+import com.newsportal.model.News;
 import com.newsportal.repository.NewsRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,7 +25,7 @@ public class NewsService {
         this.newsRepository = newsRepository;
     }
 
-   public List<NewsInfoDTO> getTop25News() {
+    public List<NewsInfoDTO> getTop25News() {
         return newsRepository.findTop25News(PageRequest.of(0, 25));
     }
 
@@ -48,7 +50,6 @@ public class NewsService {
     }
 
 
-
     public Page<NewsInfoDTO> getNewsByDate(LocalDate date) {
         LocalDateTime startOfDay = date.atStartOfDay();
         LocalDateTime endOfDay = date.plusDays(1).atStartOfDay();
@@ -57,8 +58,24 @@ public class NewsService {
     }
 
 
-   public NewsDTO getNewsById(Long newsId) {
+    public NewsDTO getNewsById(Long newsId) {
         return newsRepository.findNewsById(newsId);
     }
 
+    public Page<NewsInfoDTO> getNewsPage(Pageable pageable) {
+        return newsRepository.findNewsWithPagination(pageable);
+    }
+
+
+    @Transactional
+    public void createNews(Long authorUserId, String title, String content, String imageUrl) {
+        News news = new News();
+        news.setAuthorUserId(authorUserId);
+        news.setTitle(title);
+        news.setContent(content);
+        news.setImageUrl(imageUrl);
+
+        // createdAt and updatedAt are handled automatically
+        newsRepository.save(news);
+    }
 }
