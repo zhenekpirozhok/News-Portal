@@ -72,8 +72,9 @@ public class NewsController {
         return ResponseEntity.ok(newsList);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<String> createNews(@RequestBody NewsDTO newsDTO) {
+    @RequestMapping(value = "/create", method = RequestMethod.POST,
+            headers = "Accept=application/json")
+    private ResponseEntity<String> createNews(@RequestBody NewsDTO newsDTO) {
         newsService.createNews(newsDTO.getAuthorUserId(), newsDTO.getTitle(), newsDTO.getContent(), newsDTO.getImageUrl());
         return ResponseEntity.ok("Comment created successfully");
     }
