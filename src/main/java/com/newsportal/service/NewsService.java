@@ -78,7 +78,7 @@ public class NewsService {
         news.setTitle(title);
         news.setContent(content);
         news.setImageUrl(imageUrl);
-
+        news.setStatusId(1L);
         // createdAt and updatedAt are handled automatically
         newsRepository.save(news);
     }
