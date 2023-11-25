@@ -1,6 +1,9 @@
 package com.newsportal.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.Instant;
 
 @Entity
 @Table(name = "users")
@@ -8,6 +11,7 @@ public class User {
 
     @Id
     @Column(name = "user_id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "username")
@@ -26,7 +30,8 @@ public class User {
     private long status;
 
     @Column(name = "created_at")
-    private String createdAt;
+    @CreationTimestamp
+    private Instant createdAt;
 
 
     public Long getId() {
@@ -77,11 +82,11 @@ public class User {
         this.status = status;
     }
 
-    public String getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 }
