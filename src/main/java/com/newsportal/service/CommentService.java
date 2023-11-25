@@ -30,4 +30,9 @@ public class CommentService {
         // createdAt and updatedAt are handled automatically
         commentRepository.save(comment);
     }
+
+
+    public void deleteComment(Long id) {
+        commentRepository.deleteById(id);
+    }
 }

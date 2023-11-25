@@ -27,4 +27,11 @@ public class CommentController {
         commentService.createComment(commentCreateDTO.getUserId(), commentCreateDTO.getNewsId(), commentCreateDTO.getContent());
         return ResponseEntity.ok("Comment created successfully");
     }
+
+
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<?> deleteNews(@PathVariable Long id) {
+        commentService.deleteComment(id);
+        return ResponseEntity.ok("Comment deleted successfully");
+    }
 }

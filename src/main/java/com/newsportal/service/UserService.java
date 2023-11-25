@@ -41,4 +41,9 @@ public class UserService {
         // createdAt and updatedAt are handled automatically
         userRepository.save(user);
     }
+
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
+
 }

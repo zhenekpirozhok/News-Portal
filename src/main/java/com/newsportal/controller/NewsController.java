@@ -2,6 +2,7 @@ package com.newsportal.controller;
 
 import com.newsportal.dto.NewsDTO;
 import com.newsportal.dto.NewsInfoDTO;
+import com.newsportal.dto.NewsUpdateDTO;
 import com.newsportal.model.News;
 import com.newsportal.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -83,5 +86,35 @@ public class NewsController {
     public ResponseEntity<List<News>> searchNews(@PathVariable String keyword) {
         List<News> searchResults = newsService.searchNews(keyword);
         return ResponseEntity.ok(searchResults);
+    }
+
+
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<?> deleteNews(@PathVariable Long id) {
+        newsService.deleteNews(id);
+        return ResponseEntity.ok("News item deleted successfully");
+    }
+
+
+    @PutMapping("/update")
+    public ResponseEntity<String> updateNews(@RequestBody NewsUpdateDTO newsUpdateDTO) {
+        newsService.updateNews(newsUpdateDTO);
+        return ResponseEntity.ok("News updated successfully");
+    }
+
+
+    @GetMapping("/all")
+    public ResponseEntity<List<News>> getAllNews() {
+        return ResponseEntity.ok(newsService.getAllNews());
+    }
+
+    @GetMapping("/admin_date/{date}")
+    public ResponseEntity<List<News>> getNewsByDate(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Instant date) {
+        return ResponseEntity.ok(newsService.getNewsByDate(date));
+    }
+
+    @GetMapping("/admin_author/{authorId}")
+    public ResponseEntity<List<News>> getNewsByAuthor(@PathVariable Long authorId) {
+        return ResponseEntity.ok(newsService.getNewsByAuthor(authorId));
     }
 }

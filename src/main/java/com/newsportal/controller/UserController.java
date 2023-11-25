@@ -35,4 +35,10 @@ public class UserController {
         return ResponseEntity.ok("Waiting created successfully");
     }
 
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<?> deleteNews(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.ok("User item deleted successfully");
+    }
+
 }

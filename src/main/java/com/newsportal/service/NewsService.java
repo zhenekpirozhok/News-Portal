@@ -2,6 +2,7 @@ package com.newsportal.service;
 
 import com.newsportal.dto.NewsDTO;
 import com.newsportal.dto.NewsInfoDTO;
+import com.newsportal.dto.NewsUpdateDTO;
 import com.newsportal.model.News;
 import com.newsportal.repository.NewsRepository;
 import jakarta.transaction.Transactional;
@@ -9,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -81,5 +84,42 @@ public class NewsService {
         news.setStatusId(1L);
         // createdAt and updatedAt are handled automatically
         newsRepository.save(news);
+    }
+
+
+    public void deleteNews(Long id) {
+        newsRepository.deleteById(id);
+    }
+
+    public void updateNews(NewsUpdateDTO newsUpdateDTO) {
+        newsRepository.findById(newsUpdateDTO.getId()).ifPresent(news -> {
+            if(newsUpdateDTO.getAuthorUserId() != null) news.setAuthorUserId(newsUpdateDTO.getAuthorUserId());
+            if(newsUpdateDTO.getTitle() != null) news.setTitle(newsUpdateDTO.getTitle());
+            if(newsUpdateDTO.getContent() != null) news.setContent(newsUpdateDTO.getContent());
+            if(newsUpdateDTO.getImageUrl() != null) news.setImageUrl(newsUpdateDTO.getImageUrl());
+            if(newsUpdateDTO.getIsMainNews() != null) news.setIsMainNews(newsUpdateDTO.getIsMainNews());
+            if(newsUpdateDTO.getPriority() != null) news.setPriority(newsUpdateDTO.getPriority());
+            if(newsUpdateDTO.getViews() != null) news.setViews(newsUpdateDTO.getViews());
+            if(newsUpdateDTO.getLikes() != null) news.setLikes(newsUpdateDTO.getLikes());
+            if(newsUpdateDTO.getStatusId() != null) news.setStatusId(newsUpdateDTO.getStatusId());
+            if(newsUpdateDTO.getPublicAt() != null) news.setPublicAt(newsUpdateDTO.getPublicAt());
+            if(newsUpdateDTO.getUnpublicAt() != null) news.setUnpublicAt(newsUpdateDTO.getUnpublicAt());
+            if(newsUpdateDTO.getUpdatedBy() != null) news.setUpdatedBy(newsUpdateDTO.getUpdatedBy());
+
+            newsRepository.save(news);
+        });
+    }
+
+    public List<News> getAllNews() {
+        // Sorting by 'createdAt' in descending order so the newest news comes first
+        return newsRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
+    }
+
+    public List<News> getNewsByDate(Instant date) {
+        return newsRepository.findByPublicAt(date);
+    }
+
+    public List<News> getNewsByAuthor(Long authorUserId) {
+        return newsRepository.findByAuthorUserId(authorUserId);
     }
 }
