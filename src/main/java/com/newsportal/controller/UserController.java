@@ -29,4 +29,10 @@ public class UserController {
         return ResponseEntity.ok("User created successfully");
     }
 
+    @PostMapping("/create_waiting")
+    public ResponseEntity<String> createWaiting(@RequestBody UserCreateDTO userCreateDTO) {
+        userService.createWaiting(userCreateDTO.getUsername(), userCreateDTO.getPassword(), userCreateDTO.getEmail());
+        return ResponseEntity.ok("Waiting created successfully");
+    }
+
 }

@@ -29,4 +29,16 @@ public class UserService {
         // createdAt and updatedAt are handled automatically
         userRepository.save(user);
     }
+
+    @Transactional
+    public  void createWaiting(String username, String password, String email) {
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.setRole("waiting");
+        user.setStatus(1);
+        // createdAt and updatedAt are handled automatically
+        userRepository.save(user);
+    }
 }
