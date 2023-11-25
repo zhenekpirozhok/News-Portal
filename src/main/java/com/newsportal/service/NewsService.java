@@ -11,7 +11,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -61,8 +63,22 @@ public class NewsService {
     }
 
 
+    @Transactional
     public NewsDTO getNewsById(Long newsId) {
-        return newsRepository.findNewsById(newsId);
+        return newsRepository.findById(newsId).map(news -> {
+            news.setViews(news.getViews() + 1); // Increment the views
+            newsRepository.save(news); // Save the news item back to the database
+
+            // Convert to DTO
+            return new NewsDTO(
+                    news.getAuthorUserId(),
+                    news.getTitle(),
+                    news.getContent(),
+                    news.getImageUrl(),
+                    news.getViews(),
+                    news.getPublicAt()
+            );
+        }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "News not found"));
     }
 
     public List<News> searchNews(String keyword) {

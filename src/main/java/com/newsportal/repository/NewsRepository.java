@@ -1,6 +1,5 @@
 package com.newsportal.repository;
 
-import com.newsportal.dto.NewsDTO;
 import com.newsportal.dto.NewsInfoDTO;
 import com.newsportal.model.News;
 import org.springframework.data.domain.Page;
@@ -14,6 +13,8 @@ import org.springframework.stereotype.Repository;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface NewsRepository extends JpaRepository<News, Long> {
 
@@ -52,9 +53,7 @@ public interface NewsRepository extends JpaRepository<News, Long> {
 
 
     // 6. Новость по ID
-     @Query("SELECT new com.newsportal.dto.NewsDTO(n.authorUserId, n.title, n.content, n.imageUrl, n.views, n.publicAt) " +
-            "FROM News n WHERE n.id = :newsId")
-    NewsDTO findNewsById(@Param("newsId") Long newsId);
+    Optional<News> findById(Long id);
 
 
     //7. Загрузить еще
