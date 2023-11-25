@@ -111,7 +111,7 @@ public class NewsService {
     }
 
     public List<News> getAllNews() {
-        // Sorting by 'createdAt' in descending order so the newest news comes first
+
         return newsRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
     }
 

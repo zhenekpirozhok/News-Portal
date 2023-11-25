@@ -2,10 +2,14 @@ package com.newsportal.controller;
 
 import com.newsportal.dto.UserCreateDTO;
 import com.newsportal.dto.UserDTO;
+import com.newsportal.dto.UserUpdateDTO;
+import com.newsportal.model.User;
 import com.newsportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -41,4 +45,25 @@ public class UserController {
         return ResponseEntity.ok("User item deleted successfully");
     }
 
+    @GetMapping("/admins")
+    public ResponseEntity<List<User>> getAllAdminUsers() {
+        return ResponseEntity.ok(userService.getAllAdminUsers());
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> getAllUsers() {
+        return ResponseEntity.ok(userService.getAllUsers());
+    }
+
+    @GetMapping("/waiting")
+    public ResponseEntity<List<User>> getAllWaitingUsers() {
+        return ResponseEntity.ok(userService.getAllWaitingUsers());
+    }
+
+
+    @PutMapping("/update")
+    public ResponseEntity<String> updateUSer(@RequestBody UserUpdateDTO userUpdateDTO) {
+        userService.updateUser(userUpdateDTO);
+        return ResponseEntity.ok("User updated successfully");
+    }
 }
