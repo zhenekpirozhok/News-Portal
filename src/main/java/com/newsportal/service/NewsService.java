@@ -116,10 +116,12 @@ public class NewsService {
     }
 
     public List<News> getNewsByDate(Instant date) {
-        return newsRepository.findByPublicAt(date);
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdAt");
+        return newsRepository.findByPublicAt(date, sort);
     }
 
     public List<News> getNewsByAuthor(Long authorUserId) {
-        return newsRepository.findByAuthorUserId(authorUserId);
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdAt");
+        return newsRepository.findByAuthorUserId(authorUserId, sort);
     }
 }

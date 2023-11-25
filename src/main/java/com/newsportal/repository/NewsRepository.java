@@ -5,6 +5,7 @@ import com.newsportal.dto.NewsInfoDTO;
 import com.newsportal.model.News;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -70,7 +71,7 @@ public interface NewsRepository extends JpaRepository<News, Long> {
             "LOWER(n.content) LIKE LOWER(CONCAT('%', :keyword, '%'))")
     List<News> search(@Param("keyword") String keyword);
 
-    List<News> findByAuthorUserId(Long authorUserId);
-    List<News> findByPublicAt(Instant date);
+    List<News> findByAuthorUserId(Long authorUserId, Sort sort);
+    List<News> findByPublicAt(Instant date, Sort sort);
 
     }
