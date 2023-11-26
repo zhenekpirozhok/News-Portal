@@ -6,6 +6,7 @@ import com.newsportal.dto.NewsUpdateDTO;
 import com.newsportal.model.News;
 import com.newsportal.model.User;
 import com.newsportal.repository.NewsRepository;
+import com.newsportal.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,8 @@ public class NewsService {
     }
     @Autowired
     private HttpSession session;
+    @Autowired
+    private UserRepository userRepository;
 
     public List<NewsInfoDTO> getTop25News() {
         return newsRepository.findTop25News(PageRequest.of(0, 25));
@@ -70,12 +73,22 @@ public class NewsService {
     @Transactional
     public NewsDTO getNewsById(Long newsId) {
         return newsRepository.findById(newsId).map(news -> {
+            // Check if the news meets the criteria
+            if (news.getStatusId() != 1 || news.getPublicAt().isAfter(Instant.now()) ||
+                    (news.getUnpublicAt() != null && news.getUnpublicAt().isBefore(Instant.now()))) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "News not available");
+            }
+
             news.setViews(news.getViews() + 1); // Increment the views
             newsRepository.save(news); // Save the news item back to the database
 
+            // Fetch the username of the author
+            User author = userRepository.findById(news.getAuthorUserId())
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Author not found"));
+
             // Convert to DTO
             return new NewsDTO(
-                    news.getAuthorUserId(),
+                    author.getUsername(), // Use the username instead of authorUserId
                     news.getTitle(),
                     news.getContent(),
                     news.getImageUrl(),
@@ -85,7 +98,8 @@ public class NewsService {
         }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "News not found"));
     }
 
-    public List<News> searchNews(String keyword) {
+
+    public List<NewsInfoDTO> searchNews(String keyword) {
         return newsRepository.search(keyword);
     }
 

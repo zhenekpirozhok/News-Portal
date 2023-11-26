@@ -70,11 +70,11 @@ public class Comment {
         this.content = content;
     }
 
-    public long getStatusID() {
+    public long getStatusId() {
         return statusId;
     }
 
-    public void setStatusID(long statusID) {
+    public void setStatusId(long statusID) {
         this.statusId = statusID;
     }
 
@@ -101,5 +101,7 @@ public class Comment {
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+
 }
 

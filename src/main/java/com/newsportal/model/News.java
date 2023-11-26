@@ -15,7 +15,7 @@ public class News {
     @Column(name = "news_id")
     private Long id;
 
-    @Column(name = "author_user_id")
+    @Column(name = "author_user_id", insertable = false, updatable = false)
     private Long authorUserId;
 
     @Column(name = "title")
@@ -59,6 +59,10 @@ public class News {
     @Column(name = "updated_at")
     @UpdateTimestamp
     private Instant updatedAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_user_id")
+    private User user;
 
     public Long getId() {
         return id;
@@ -178,5 +182,13 @@ public class News {
 
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

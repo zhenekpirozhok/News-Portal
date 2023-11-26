@@ -4,7 +4,6 @@ import com.newsportal.dto.NewsCreateDTO;
 import com.newsportal.dto.NewsDTO;
 import com.newsportal.dto.NewsInfoDTO;
 import com.newsportal.dto.NewsUpdateDTO;
-import com.newsportal.model.News;
 import com.newsportal.service.NewsService;
 import com.newsportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,8 +90,8 @@ public class NewsController {
     }
 
     @GetMapping("/search/{keyword}")
-    public ResponseEntity<List<News>> searchNews(@PathVariable String keyword) {
-        List<News> searchResults = newsService.searchNews(keyword);
+    public ResponseEntity<List<NewsInfoDTO>> searchNews(@PathVariable String keyword) {
+        List<NewsInfoDTO> searchResults = newsService.searchNews(keyword);
         return ResponseEntity.ok(searchResults);
     }
 

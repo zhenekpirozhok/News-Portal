@@ -4,26 +4,26 @@ import java.time.Instant;
 
 public class NewsInfoDTO {
 
-    private Long authorUserId;
+    private String User;
     private String title;
     private String imageUrl;
     private Integer views;
     private Instant publicAt;
 
-    public NewsInfoDTO(Long authorUserId, String title, String imageUrl, Integer views, Instant publicAt) {
-        this.authorUserId = authorUserId;
+    public NewsInfoDTO(String User, String title, String imageUrl, Integer views, Instant publicAt) {
+        this.User = User;
         this.title = title;
         this.imageUrl = imageUrl;
         this.views = views;
         this.publicAt = publicAt;
     }
 
-    public Long getAuthorUserId() {
-        return authorUserId;
+    public String getAuthorUsername() {
+        return User;
     }
 
-    public void setAuthorUserId(Long authorUserId) {
-        this.authorUserId = authorUserId;
+    public void setAuthorUsername(String User) {
+        this.User = User;
     }
 
     public String getTitle() {

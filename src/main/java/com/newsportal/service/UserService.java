@@ -101,11 +101,13 @@ public class UserService {
 
     public boolean isCurrentUserAdmin() {
         User user = (User) session.getAttribute("user");
-        return user != null && "admin".equals(user.getRole());
+        return user != null && "admin".equals(user.getRole()) && user.getStatus() == 1;
     }
+
 
     public boolean isCurrentUserUser() {
         User user = (User) session.getAttribute("user");
-        return user != null && "user".equals(user.getRole()) ||   "admin".equals(user.getRole());
+        return user != null && (user.getStatus() == 1) && ("user".equals(user.getRole()) || "admin".equals(user.getRole()));
     }
+
 }

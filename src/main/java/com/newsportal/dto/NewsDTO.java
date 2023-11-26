@@ -3,7 +3,7 @@ package com.newsportal.dto;
 import java.time.Instant;
 
 public class NewsDTO {
-    private Long authorUserId;
+    private String authorUsername;
     private String title;
     private String content;
     private String imageUrl;
@@ -11,8 +11,8 @@ public class NewsDTO {
     private Instant publicAt;
 
 
-    public NewsDTO(Long authorUserId, String title, String content, String imageUrl, Integer views, Instant publicAt) {
-        this.authorUserId = authorUserId;
+    public NewsDTO(String authorUsername, String title, String content, String imageUrl, Integer views, Instant publicAt) {
+        this.authorUsername = authorUsername;
         this.title = title;
         this.content = content;
         this.imageUrl = imageUrl;
@@ -20,12 +20,12 @@ public class NewsDTO {
         this.publicAt = publicAt;
     }
 
-    public Long getAuthorUserId() {
-        return authorUserId;
+    public String getAuthorUsername() {
+        return authorUsername;
     }
 
-    public void setAuthorUserId(Long authorUserId) {
-        this.authorUserId = authorUserId;
+    public void setAuthorUsername(String authorUsername) {
+        this.authorUsername = authorUsername;
     }
 
     public String getTitle() {

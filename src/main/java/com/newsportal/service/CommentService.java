@@ -28,6 +28,7 @@ public class CommentService {
 
     public List<CommentDTO> getCommentsByNewsId(Long newsId) {
         return commentRepository.findByNewsId(newsId).stream()
+                .filter(comment -> comment.getStatusId() == 1) // Filter comments with statusId 1
                 .map(comment -> {
                     // Use Optional to handle the case where user might not be found
                     String username = userRepository.findById(comment.getUserId())
@@ -40,6 +41,8 @@ public class CommentService {
                 .collect(Collectors.toList());
     }
 
+
+
     @Transactional
     public void createComment(Long newsId, String content) {
         User currentUser = (User) session.getAttribute("user");
@@ -47,7 +50,7 @@ public class CommentService {
         comment.setUserId(currentUser.getId());
         comment.setNewsId(newsId);
         comment.setContent(content);
-        comment.setStatusID(1L);
+        comment.setStatusId(1L);
         // createdAt and updatedAt are handled automatically
         commentRepository.save(comment);
     }
@@ -76,7 +79,7 @@ public class CommentService {
             if(commentUpdateDTO.getUpdatedBy() != null) news.setUpdatedBy(commentUpdateDTO.getUpdatedBy());
             if(commentUpdateDTO.getCreatedAt() != null) news.setCreatedAt(commentUpdateDTO.getCreatedAt());
             if(commentUpdateDTO.getUpdatedAt() != null) news.setUpdatedAt(commentUpdateDTO.getUpdatedAt());
-            if(commentUpdateDTO.getStatusId() != null) news.setStatusID(commentUpdateDTO.getStatusId());
+            if(commentUpdateDTO.getStatusId() != null) news.setStatusId(commentUpdateDTO.getStatusId());
 
 
             commentRepository.save(news);
