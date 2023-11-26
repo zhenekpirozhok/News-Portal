@@ -2,7 +2,7 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
 import { UserOutlined, FileOutlined } from '@ant-design/icons';
-import './SiderPanel.css'; // Add your CSS file if needed
+import './SiderPanel.css';
 
 const { Sider } = Layout;
 

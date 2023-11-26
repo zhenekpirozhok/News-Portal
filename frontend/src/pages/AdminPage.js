@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Layout, Menu, Flex } from "antd";
 import { UserOutlined, DiffOutlined } from "@ant-design/icons";
 import SidePanel from "../components/Admin/SiderPanel/SiderPanel";
+import AdminFilterPanel from "../components/Admin/AdminFilterPanel/AdminFilterPanel";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -21,7 +22,7 @@ const AdminPage = ({ children }) => {
             {selectedTab === "users" && (
               <div>
                 {/* Render content for the "Users" tab */}
-                <h2>Users Tab Content</h2>
+                <AdminFilterPanel />
                 {children}
               </div>
             )}
