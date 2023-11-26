@@ -5,14 +5,10 @@ import news from "../mockData/news.json";
 import Footer from "../components/Footer/Footer";
 import Category from "../components/Category/Category";
 import Section from "../components/Section/Section";
+import getCategories from "../mockData/categories";
 
 const CategoriesPage = () => {
-  const categories = news
-    .map((news) => news.category)
-    .filter(
-      (category, index, self) =>
-        self.findIndex((c) => c.id === category.id) === index
-    );
+  const categories = getCategories(news);
 
   return (
     <div>

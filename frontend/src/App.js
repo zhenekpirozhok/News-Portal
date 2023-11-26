@@ -7,6 +7,7 @@ import FilterPage from "./pages/FilterPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import OneNewsPage from "./pages/OneNewsPage";
 import SignInPage from "./pages/SignInPage";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/search" element={<SearchPage />}/>
           <Route path="/news" element={<FilterPage />} />
           <Route path="/login" element={<SignInPage />}/>
+          <Route path="/admin" element={<AdminPage />}/>
         </Routes>
       </Router>
     </div>
