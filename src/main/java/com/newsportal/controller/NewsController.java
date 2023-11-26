@@ -1,16 +1,19 @@
 package com.newsportal.controller;
 
+import com.newsportal.dto.NewsCreateDTO;
 import com.newsportal.dto.NewsDTO;
 import com.newsportal.dto.NewsInfoDTO;
 import com.newsportal.dto.NewsUpdateDTO;
 import com.newsportal.model.News;
 import com.newsportal.service.NewsService;
+import com.newsportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +31,8 @@ public class NewsController {
     public NewsController(NewsService newsService) {
         this.newsService = newsService;
     }
+    @Autowired
+    private UserService userService;
 
       @GetMapping("/top25")
     public ResponseEntity<List<NewsInfoDTO>> getTop25News() {
@@ -77,8 +82,11 @@ public class NewsController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<String> createNews(@RequestBody NewsDTO newsDTO) {
-        newsService.createNews(newsDTO.getAuthorUserId(), newsDTO.getTitle(), newsDTO.getContent(), newsDTO.getImageUrl());
+    public ResponseEntity<String> createNews(@RequestBody NewsCreateDTO newsDTO) {
+        if (!userService.isCurrentUserAdmin()) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied.");
+        }
+        newsService.createNews( newsDTO.getTitle(), newsDTO.getContent(), newsDTO.getImageUrl());
         return ResponseEntity.ok("News created successfully");
     }
 
@@ -91,6 +99,9 @@ public class NewsController {
 
     @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteNews(@PathVariable Long id) {
+        if (!userService.isCurrentUserAdmin()) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied.");
+        }
         newsService.deleteNews(id);
         return ResponseEntity.ok("News item deleted successfully");
     }
@@ -98,23 +109,35 @@ public class NewsController {
 
     @PutMapping("/update")
     public ResponseEntity<String> updateNews(@RequestBody NewsUpdateDTO newsUpdateDTO) {
+        if (!userService.isCurrentUserAdmin()) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied.");
+        }
         newsService.updateNews(newsUpdateDTO);
         return ResponseEntity.ok("News updated successfully");
     }
 
 
     @GetMapping("/all")
-    public ResponseEntity<List<News>> getAllNews() {
-        return ResponseEntity.ok(newsService.getAllNews());
+    public ResponseEntity<?> getAllNews() {
+        if (!userService.isCurrentUserAdmin()) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied.");
+        }
+          return ResponseEntity.ok(newsService.getAllNews());
     }
 
     @GetMapping("/admin_date/{date}")
-    public ResponseEntity<List<News>> getNewsByDate(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Instant date) {
+    public ResponseEntity<?> getNewsByDate(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Instant date) {
+        if (!userService.isCurrentUserAdmin()) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied.");
+        }
         return ResponseEntity.ok(newsService.getNewsByDate(date));
     }
 
     @GetMapping("/admin_author/{authorId}")
-    public ResponseEntity<List<News>> getNewsByAuthor(@PathVariable Long authorId) {
+    public ResponseEntity<?> getNewsByAuthor(@PathVariable Long authorId) {
+        if (!userService.isCurrentUserAdmin()) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied.");
+        }
         return ResponseEntity.ok(newsService.getNewsByAuthor(authorId));
     }
 }

@@ -4,7 +4,9 @@ import com.newsportal.dto.NewsDTO;
 import com.newsportal.dto.NewsInfoDTO;
 import com.newsportal.dto.NewsUpdateDTO;
 import com.newsportal.model.News;
+import com.newsportal.model.User;
 import com.newsportal.repository.NewsRepository;
+import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,6 +31,8 @@ public class NewsService {
     public NewsService(NewsRepository newsRepository) {
         this.newsRepository = newsRepository;
     }
+    @Autowired
+    private HttpSession session;
 
     public List<NewsInfoDTO> getTop25News() {
         return newsRepository.findTop25News(PageRequest.of(0, 25));
@@ -91,9 +95,10 @@ public class NewsService {
 
 
     @Transactional
-    public void createNews(Long authorUserId, String title, String content, String imageUrl) {
+    public void createNews( String title, String content, String imageUrl) {
+        User currentUser = (User) session.getAttribute("user");
         News news = new News();
-        news.setAuthorUserId(authorUserId);
+        news.setAuthorUserId(currentUser.getId());
         news.setTitle(title);
         news.setContent(content);
         news.setImageUrl(imageUrl);

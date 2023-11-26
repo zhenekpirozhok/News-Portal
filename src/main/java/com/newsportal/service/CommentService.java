@@ -3,7 +3,10 @@ package com.newsportal.service;
 import com.newsportal.dto.CommentDTO;
 import com.newsportal.dto.CommentUpdateDTO;
 import com.newsportal.model.Comment;
+import com.newsportal.model.User;
 import com.newsportal.repository.CommentRepository;
+import com.newsportal.repository.UserRepository;
+import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -18,18 +21,33 @@ public class CommentService {
 
     @Autowired
     private CommentRepository commentRepository;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private HttpSession session;
 
     public List<CommentDTO> getCommentsByNewsId(Long newsId) {
         return commentRepository.findByNewsId(newsId).stream()
-                .map(comment -> new CommentDTO(comment.getUserId(), newsId ,comment.getContent(), comment.getCreatedAt()))
+                .map(comment -> {
+                    // Use Optional to handle the case where user might not be found
+                    String username = userRepository.findById(comment.getUserId())
+                            .map(User::getUsername) // If user is found, get the username
+                            .orElse("[Deleted User]"); // If not found, set a placeholder or empty string
+
+                    // Create new CommentDTO with username instead of userId
+                    return new CommentDTO(username, newsId, comment.getContent(), comment.getCreatedAt());
+                })
                 .collect(Collectors.toList());
     }
+
     @Transactional
-    public void createComment(Long userId, Long newsId, String content) {
+    public void createComment(Long newsId, String content) {
+        User currentUser = (User) session.getAttribute("user");
         Comment comment = new Comment();
-        comment.setUserId(userId);
+        comment.setUserId(currentUser.getId());
         comment.setNewsId(newsId);
         comment.setContent(content);
+        comment.setStatusID(1L);
         // createdAt and updatedAt are handled automatically
         commentRepository.save(comment);
     }

@@ -3,7 +3,7 @@ package com.newsportal.dto;
 import java.time.Instant;
 
 public class CommentDTO {
-    private Long userId;
+    private String username;
     private Long newsId;
     private String content;
     private Instant createdAt;
@@ -11,19 +11,19 @@ public class CommentDTO {
 
 
 
-    public CommentDTO(Long userId, Long newsId, String content, Instant createdAt) {
-        this.userId = userId;
+    public CommentDTO(String username, Long newsId, String content, Instant createdAt) {
+        this.username = username;
         this.newsId = newsId;
         this.content = content;
         this.createdAt = createdAt;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Long getNewsId() {

@@ -3,6 +3,7 @@ package com.newsportal.service;
 import com.newsportal.dto.UserUpdateDTO;
 import com.newsportal.model.User;
 import com.newsportal.repository.UserRepository;
+import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -17,6 +18,8 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+
 
     public Optional<User> findUserById(Long id) {
         return userRepository.findById(id);
@@ -75,5 +78,34 @@ public class UserService {
 
             userRepository.save(user);
         });
+    }
+
+
+    @Autowired
+    private HttpSession session; // Inject the session
+
+
+    public boolean loginUser(String username, String password) {
+        Optional<User> user = userRepository.findByUsername(username);
+        if (user.isPresent() && password.matches(password)) {
+            session.setAttribute("user", user.get());
+            return true;
+        }
+        return false;
+    }
+
+
+    public void logoutUser() {
+        session.invalidate(); // Invalidate the session
+    }
+
+    public boolean isCurrentUserAdmin() {
+        User user = (User) session.getAttribute("user");
+        return user != null && "admin".equals(user.getRole());
+    }
+
+    public boolean isCurrentUserUser() {
+        User user = (User) session.getAttribute("user");
+        return user != null && "user".equals(user.getRole()) ||   "admin".equals(user.getRole());
     }
 }
