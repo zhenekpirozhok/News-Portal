@@ -20,6 +20,7 @@ const Header = ({ user, isSearchVisible, categories }) => {
     <Flex justify="space-between" align="center" className="header-container">
       {/* Flex-box with links */}
       <Flex className="header-links" gap={100}>
+        <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
         <Link to="/news" className={location.pathname === '/news' ? 'active' : ''}>News</Link>
         <Dropdown menu={{ items }}>
           <Link to="/categories" className={location.pathname === '/categories' ? 'active' : ''}>

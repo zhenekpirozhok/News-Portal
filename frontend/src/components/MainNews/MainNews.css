@@ -16,3 +16,9 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.main-news-tag {
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
