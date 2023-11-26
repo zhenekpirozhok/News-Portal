@@ -17,7 +17,6 @@ const MainNews = ({ news }) => {
           <Col className="main-news-details" span={10}>
             <div className="main-news-tag">
               <Tag color="blue">{news.category.name}</Tag>
-              {/* Add more tags as needed */}
             </div>
             <h2 className="main-news-title">{news.title}</h2>
             <Link href="/view-more">View More...</Link>
