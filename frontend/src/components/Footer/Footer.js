@@ -5,7 +5,7 @@ import './Footer.css'; // Import the CSS file
 const Footer = () => {
   return (
     <footer className="footer-container">
-      <p>&copy; 2023 Your News Portal</p>
+      <p>&copy; 2023 EPAM ESDE News Portal</p>
     </footer>
   );
 };
