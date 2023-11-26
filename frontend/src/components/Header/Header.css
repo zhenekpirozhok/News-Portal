@@ -17,7 +17,8 @@
 }
 
 .header-container a.active {
-  font-weight: bold;
+ 
+  color: #E77CF9;
 }
 
 
