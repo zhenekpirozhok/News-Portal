@@ -8,9 +8,12 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import OneNewsPage from "./pages/OneNewsPage";
 import SignInPage from "./pages/SignInPage";
 import AdminPage from "./pages/AdminPage";
+import store from "./redux/store";
+import { Provider } from "react-redux";
 
 function App() {
   return (
+    <Provider store={store}>
     <div className="App">
       <Router>
         <Routes>
@@ -25,6 +28,7 @@ function App() {
         </Routes>
       </Router>
     </div>
+    </Provider>
   );
 }
 

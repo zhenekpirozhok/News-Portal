@@ -3,16 +3,15 @@ import { Layout, Menu, Flex } from "antd";
 import { UserOutlined, DiffOutlined } from "@ant-design/icons";
 import SidePanel from "../components/Admin/SiderPanel/SiderPanel";
 import AdminFilterPanel from "../components/Admin/AdminFilterPanel/AdminFilterPanel";
+import { useSelector } from "react-redux";
+import store from "../redux/store";
 import AddNewsWindow from "../components/Admin/AddNewsWindow/AddNewsWindow";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const AdminPage = ({ children }) => {
-  const [selectedTab, setSelectedTab] = useState("users");
+const AdminPage = () => {
 
-  const handleMenuClick = (tab) => {
-    setSelectedTab(tab);
-  };
+  const selectedTab = useSelector((state) => state.selectedMenuItem);
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -20,7 +19,7 @@ const AdminPage = ({ children }) => {
       <Layout>
         <Header style={{ padding: 0, background: "#001529" }} />
         <Content style={{ margin: "24px 16px 0" }}>
-            {selectedTab === "users" && (
+            {selectedTab === '1' && (
               <div>
                 {/* Render content for the "Users" tab */}
                 <AdminFilterPanel />
@@ -29,11 +28,9 @@ const AdminPage = ({ children }) => {
               </div>
             )}
 
-            {selectedTab === "news" && (
+            {selectedTab === '2' && (
               <div>
-                {/* Render content for the "News" tab */}
-                <h2>News Tab Content</h2>
-                {children}
+                <h2>Users Tab Content</h2>
               </div>
             )}
         </Content>
