@@ -3,6 +3,7 @@ import { Layout, Menu, Flex } from "antd";
 import { UserOutlined, DiffOutlined } from "@ant-design/icons";
 import SidePanel from "../components/Admin/SiderPanel/SiderPanel";
 import AdminFilterPanel from "../components/Admin/AdminFilterPanel/AdminFilterPanel";
+import AddNewsWindow from "../components/Admin/AddNewsWindow/AddNewsWindow";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -23,6 +24,7 @@ const AdminPage = ({ children }) => {
               <div>
                 {/* Render content for the "Users" tab */}
                 <AdminFilterPanel />
+                <AddNewsWindow />
                 {children}
               </div>
             )}
