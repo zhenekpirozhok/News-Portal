@@ -6,11 +6,14 @@ import AdminFilterPanel from "../components/Admin/AdminFilterPanel/AdminFilterPa
 import { useSelector } from "react-redux";
 import store from "../redux/store";
 import AddNewsWindow from "../components/Admin/AddNewsWindow/AddNewsWindow";
+import NewsPage from "../components/Admin/NewsPage";
+import news from "../mockData/news.json";
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const AdminPage = () => {
-  const selectedTab = useSelector((state) => state.selectedMenuItem);
+
+  const selectedTab = useSelector((state) => state.adminMenu.selectedMenuItem);
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -18,13 +21,14 @@ const AdminPage = () => {
       <Layout>
         <Header style={{ padding: 0, background: "#001529" }} />
         <Content style={{ margin: "24px 16px 0" }}>
-          {selectedTab === "1" && (
-            <div>
-              {/* Render content for the "News" tab */}
-              <AdminFilterPanel />
-              <AddNewsWindow />
-            </div>
-          )}
+            {selectedTab === '1' && (
+              <div>
+                {/* Render content for the "Users" tab */}
+                <AdminFilterPanel />
+                <AddNewsWindow />
+                <NewsPage newsList={news}/>
+              </div>
+            )}
 
           {selectedTab === "2" && (
             <div>
