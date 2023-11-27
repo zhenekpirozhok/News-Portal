@@ -25,6 +25,7 @@ const SiderPanel = () => {
       onCollapse={(collapsed, type) => {
         console.log(collapsed, type);
       }}
+      className='demo-sider'
     >
       <div className="demo-logo-vertical" />
       <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
