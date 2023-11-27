@@ -124,6 +124,14 @@ public class NewsController {
           return ResponseEntity.ok(newsService.getAllNews());
     }
 
+    @GetMapping("/admin/{id}")
+    public ResponseEntity<?> getAdminNewsById(@PathVariable Long id) {
+        if (!userService.isCurrentUserAdmin()) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied.");
+        }
+        return ResponseEntity.ok(newsService.getAdminNewsByID(id));
+    }
+
     @GetMapping("/admin_date/{date}")
     public ResponseEntity<?> getNewsByDate(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Instant date) {
         if (!userService.isCurrentUserAdmin()) {

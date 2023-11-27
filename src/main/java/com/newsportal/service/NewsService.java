@@ -22,6 +22,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NewsService {
@@ -147,6 +148,11 @@ public class NewsService {
     public List<News> getAllNews() {
 
         return newsRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
+    }
+
+    public Optional<News> getAdminNewsByID(Long id) {
+
+        return newsRepository.findById(id);
     }
 
     public List<News> getNewsByDate(Instant date) {

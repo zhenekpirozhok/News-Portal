@@ -23,7 +23,7 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
         return userService.findUserById(id)
-                .map(user -> new UserDTO(user.getUsername(), user.getEmail())) // Convert User to UserDTO
+                .map(user -> new UserDTO( user.getUsername(), user.getEmail(), user.getRole())) // Convert User to UserDTO
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -34,7 +34,7 @@ public class UserController {
         if (currentUser == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User is not logged in.");
         }
-        UserDTO userDTO = new UserDTO(currentUser.getUsername(), currentUser.getEmail());
+        UserDTO userDTO = new UserDTO( currentUser.getUsername(), currentUser.getEmail(), currentUser.getRole());
         return ResponseEntity.ok(userDTO);
     }
 
