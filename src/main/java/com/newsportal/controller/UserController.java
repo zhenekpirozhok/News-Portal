@@ -50,7 +50,7 @@ public class UserController {
         return ResponseEntity.ok("Waiting created successfully");
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteNews(@PathVariable Long id) {
         if (!userService.isCurrentUserAdmin()) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied.");
