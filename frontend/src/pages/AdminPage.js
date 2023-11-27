@@ -8,6 +8,9 @@ import store from "../redux/store";
 import AddNewsWindow from "../components/Admin/AddNewsWindow/AddNewsWindow";
 import NewsPage from "../components/Admin/NewsPage";
 import news from "../mockData/news.json";
+import UsersPage from "../components/Admin/UsersPage";
+import users from "../mockData/users.json"
+import WaitListPage from "../components/Admin/WaitListPage";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -32,7 +35,12 @@ const AdminPage = () => {
 
           {selectedTab === "2" && (
             <div>
-              <h2>Users Tab Content</h2>
+              <UsersPage users={users}/>
+            </div>
+          )}
+          {selectedTab === "3" && (
+            <div>
+              <WaitListPage users={users}/>
             </div>
           )}
         </Content>

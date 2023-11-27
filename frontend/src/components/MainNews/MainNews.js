@@ -19,7 +19,7 @@ const MainNews = ({ news }) => {
               <Tag color="blue">{news.category.name}</Tag>
             </div>
             <h2 className="main-news-title">{news.title}</h2>
-            <Link href="/view-more">View More...</Link>
+            <a href={`news/${news?.id}`}>View More...</a>
           </Col>
         </Row>
     </section>
