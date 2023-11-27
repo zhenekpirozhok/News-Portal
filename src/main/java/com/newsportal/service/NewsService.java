@@ -26,12 +26,11 @@ import java.util.List;
 @Service
 public class NewsService {
 
-    private final NewsRepository newsRepository;
+
 
     @Autowired
-    public NewsService(NewsRepository newsRepository) {
-        this.newsRepository = newsRepository;
-    }
+    private  NewsRepository newsRepository;
+
     @Autowired
     private HttpSession session;
     @Autowired

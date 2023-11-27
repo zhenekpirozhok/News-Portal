@@ -16,7 +16,7 @@ public class News {
     @Column(name = "news_id")
     private Long id;
 
-    @Column(name = "author_user_id", insertable = false, updatable = false)
+    @Column(name = "author_user_id")
     private Long authorUserId;
 
     @Column(name = "title")
@@ -62,7 +62,7 @@ public class News {
     private Instant updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "author_user_id")
+    @JoinColumn(name = "author_user_id", insertable = false, updatable = false)
     @JsonIgnore
     private User user;
 
