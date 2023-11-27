@@ -1,17 +1,17 @@
 // Parent component rendering a list of users
 import React from "react";
-import UsersLine from "./OneLine/UsersLine";
+import AdminsLine from "./OneLine/AdminsLine";
 import { Typography, Divider } from 'antd';
 
 const { Title } = Typography;
 
-const UsersPage = ({ users, onEdit, onDelete }) => {
+const AdminsPage = ({ users, onEdit, onDelete }) => {
   return (
     <div>
-      <Title level={2}>Users</Title>
+      <Title level={2}>Admins</Title>
       <Divider />
       {users.map((user) => (
-        <UsersLine
+        <AdminsLine
           key={user.id}
           user={user}
           onEdit={onEdit}
@@ -22,4 +22,4 @@ const UsersPage = ({ users, onEdit, onDelete }) => {
   );
 };
 
-export default UsersPage;
+export default AdminsPage;

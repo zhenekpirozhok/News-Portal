@@ -1,7 +1,7 @@
 // SiderPanel.js
 import React from 'react';
 import { Layout, Menu } from 'antd';
-import { UserOutlined, FileOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import { UserOutlined, FileOutlined, ClockCircleOutlined, FireOutlined } from '@ant-design/icons';
 import './SiderPanel.css'; // Add your CSS file if needed
 import { useDispatch } from 'react-redux';
 import { setSelectedMenuItem } from '../../../redux/adminMenu/actions';
@@ -40,6 +40,10 @@ const SiderPanel = () => {
         <Menu.Item key="3" icon={<ClockCircleOutlined />}
         onClick={() => handleMenuClick({ key: '3' })}>
           Wait List
+        </Menu.Item>
+        <Menu.Item key="4" icon={<FireOutlined />}
+        onClick={() => handleMenuClick({ key: '4' })}>
+          Admins
         </Menu.Item>
       </Menu>
     </Sider>

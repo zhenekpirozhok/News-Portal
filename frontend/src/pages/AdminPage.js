@@ -11,6 +11,7 @@ import news from "../mockData/news.json";
 import UsersPage from "../components/Admin/UsersPage";
 import users from "../mockData/users.json"
 import WaitListPage from "../components/Admin/WaitListPage";
+import AdminsPage from "../components/Admin/AdminsPage";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -43,6 +44,16 @@ const AdminPage = () => {
               <WaitListPage users={users}/>
             </div>
           )}
+          {selectedTab === "4" && (
+            <div>
+              <AdminsPage users={users}/>
+            </div>
+          )}
+          {/* {selectedTab === "4" && (
+            <div>
+              <AdminsPage users={users}/>
+            </div>
+          )} */}
         </Content>
         <Footer style={{ textAlign: "center" }}>
           ©2023 EPAM ESDE News Portal
