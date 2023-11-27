@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/zhenekpirozhok/News-Portal/issues"
   },
-  "homepage": "https://github.com/zhenekpirozhok/News-Portal#readme"
+  "homepage": "https://github.com/zhenekpirozhok/News-Portal#readme",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.7"
+  }
 }
