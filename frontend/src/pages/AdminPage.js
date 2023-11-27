@@ -6,6 +6,8 @@ import AdminFilterPanel from "../components/Admin/AdminFilterPanel/AdminFilterPa
 import { useSelector } from "react-redux";
 import store from "../redux/store";
 import AddNewsWindow from "../components/Admin/AddNewsWindow/AddNewsWindow";
+import NewsPage from "../components/Admin/NewsPage";
+import news from "../mockData/news.json";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -24,7 +26,7 @@ const AdminPage = () => {
                 {/* Render content for the "Users" tab */}
                 <AdminFilterPanel />
                 <AddNewsWindow />
-                {children}
+                <NewsPage newsList={news}/>
               </div>
             )}
 
