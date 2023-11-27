@@ -1,5 +1,6 @@
 package com.newsportal.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -62,6 +63,7 @@ public class News {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_user_id")
+    @JsonIgnore
     private User user;
 
     public Long getId() {
