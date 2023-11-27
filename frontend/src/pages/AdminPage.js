@@ -5,6 +5,7 @@ import SidePanel from "../components/Admin/SiderPanel/SiderPanel";
 import AdminFilterPanel from "../components/Admin/AdminFilterPanel/AdminFilterPanel";
 import { useSelector } from "react-redux";
 import store from "../redux/store";
+import AddNewsWindow from "../components/Admin/AddNewsWindow/AddNewsWindow";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -22,6 +23,8 @@ const AdminPage = () => {
               <div>
                 {/* Render content for the "Users" tab */}
                 <AdminFilterPanel />
+                <AddNewsWindow />
+                {children}
               </div>
             )}
 

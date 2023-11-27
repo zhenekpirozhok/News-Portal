@@ -1,17 +1,29 @@
-import React from "react";
-import { Flex } from "antd";
+import React, { useState } from "react";
+import { Flex, Button } from "antd";
 import { DatePicker, Select, Input } from "antd";
+import { PlusCircleFilled } from '@ant-design/icons';
+import AddNewsWindow from '../AddNewsWindow/AddNewsWindow';
 import "./AdminFilterPanel.css";
 
 const { Option } = Select;
 
-const AdminFilterPanel = ({ onDateFilterChange, onAuthorFilterChange }) => {
+const AdminFilterPanel = ({ onDateFilterChange, onAuthorFilterChange, onAddClick }) => {
+  const [isAddNewsModalVisible, setAddNewsModalVisible] = useState(false);
+
   const handleDateFilterChange = (date, dateString) => {
     onDateFilterChange(dateString);
   };
 
   const handleAuthorFilterChange = (value) => {
     onAuthorFilterChange(value);
+  };
+
+  const handleAddClick = () => {
+    setAddNewsModalVisible(true);
+  };
+
+  const handleAddNewsCancel = () => {
+    setAddNewsModalVisible(false);
   };
 
   return (
@@ -37,7 +49,17 @@ const AdminFilterPanel = ({ onDateFilterChange, onAuthorFilterChange }) => {
           <Option value="author2">Author 2</Option>
           {/* Add more authors as needed */}
         </Select>
+        <Button className="add-button" icon={<PlusCircleFilled style={{ fontSize: "24px", marginLeft: '10px' }} />} onClick={handleAddClick}></Button>
       </Flex>
+
+      {isAddNewsModalVisible && (
+        <AddNewsWindow
+          visible={isAddNewsModalVisible}
+          onCancel={handleAddNewsCancel}
+          onDateFilterChange={onDateFilterChange}
+          onAuthorFilterChange={onAuthorFilterChange}
+        />
+      )}
     </Flex>
   );
 };
