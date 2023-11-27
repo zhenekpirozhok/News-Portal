@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Modal, Form, Input, Button, Upload, message } from "antd";
+import { Modal, Form, Input, Button, Upload, message, Switch } from "antd";
 import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
 
 const AddNewsWindow = ({ visible, onCancel, onAddNews }) => {
   const [form] = Form.useForm();
   const [fileList, setFileList] = useState([]);
+  const [isNewsEnabled, setNewsEnabled] = useState(true);
 
   const handleFileChange = (info) => {
     if (info.file.status === "done") {
@@ -17,9 +18,13 @@ const AddNewsWindow = ({ visible, onCancel, onAddNews }) => {
 
   const onFinish = (values) => {
     // You can perform the logic to post the news with the collected values
-    onAddNews(values, fileList);
+    onAddNews({ ...values, isEnabled: isNewsEnabled }, fileList);
     form.resetFields();
     setFileList([]);
+  };
+
+  const handleToggle = (checked) => {
+    setNewsEnabled(checked);
   };
 
   return (
@@ -31,7 +36,12 @@ const AddNewsWindow = ({ visible, onCancel, onAddNews }) => {
         <Button key="cancel" onClick={onCancel}>
           Cancel
         </Button>,
-        <Button style = {{backgroundColor: 'black'}} key="post" type="primary" onClick={form.submit}>
+        <Button
+          style={{ backgroundColor: "black" }}
+          key="post"
+          type="primary"
+          onClick={form.submit}
+        >
           Post
         </Button>,
       ]}
@@ -84,6 +94,9 @@ const AddNewsWindow = ({ visible, onCancel, onAddNews }) => {
           >
             <Button icon={<UploadOutlined />}>Attach Files</Button>
           </Upload>
+        </Form.Item>
+        <Form.Item label="Enable News" valuePropName="checked">
+          <Switch checked={isNewsEnabled} onChange={handleToggle} />
         </Form.Item>
       </Form>
     </Modal>

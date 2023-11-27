@@ -1,5 +1,5 @@
 const initialState = {
-  selectedMenuItem: "/news", // Initial selected menu item
+  selectedMenuItem: "1", // Initial selected menu item
 };
 
 const rootReducer = (state = initialState, action) => {
