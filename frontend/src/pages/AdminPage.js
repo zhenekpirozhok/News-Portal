@@ -10,7 +10,7 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const AdminPage = () => {
 
-  const selectedTab = useSelector((state) => state.selectedMenuItem);
+  const selectedTab = useSelector((state) => state.adminMenu.selectedMenuItem);
 
   return (
     <Layout style={{ minHeight: "100vh" }}>

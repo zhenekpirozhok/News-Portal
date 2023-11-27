@@ -4,7 +4,7 @@ import { Layout, Menu } from 'antd';
 import { UserOutlined, FileOutlined } from '@ant-design/icons';
 import './SiderPanel.css'; // Add your CSS file if needed
 import { useDispatch } from 'react-redux';
-import { setSelectedMenuItem } from '../../../redux/actions';
+import { setSelectedMenuItem } from '../../../redux/adminMenu/actions';
 
 const { Sider } = Layout;
 

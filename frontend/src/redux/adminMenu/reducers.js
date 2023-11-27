@@ -1,8 +1,8 @@
 const initialState = {
-  selectedMenuItem: "/news", // Initial selected menu item
+  selectedMenuItem: "1", // Initial selected menu item
 };
 
-const rootReducer = (state = initialState, action) => {
+const adminMenuReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SET_SELECTED_MENU_ITEM":
       return {
@@ -14,4 +14,6 @@ const rootReducer = (state = initialState, action) => {
   }
 };
 
-export default rootReducer;
+
+
+export default adminMenuReducer;
