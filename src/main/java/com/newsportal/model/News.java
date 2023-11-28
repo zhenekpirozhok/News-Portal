@@ -6,7 +6,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -68,12 +70,8 @@ public class News {
     @JsonIgnore
     private User user;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "news_tags",
-            joinColumns = @JoinColumn(name = "news_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id"))
-    private Set<Tag> tags = new HashSet<>();
+    @OneToMany(mappedBy = "news")
+    private List<NewsTag> newsTags = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -203,11 +201,11 @@ public class News {
         this.user = user;
     }
 
-    public Set<Tag> getTags() {
-        return tags;
+    public List<NewsTag> getNewsTags() {
+        return newsTags;
     }
 
-    public void setTags(Set<Tag> tags) {
-        this.tags = tags;
+    public void setNewsTags(List<NewsTag> newsTags) {
+        this.newsTags = newsTags;
     }
 }

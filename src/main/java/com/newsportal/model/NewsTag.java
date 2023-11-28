@@ -2,6 +2,9 @@ package com.newsportal.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "news_tag")
 public class NewsTag {
@@ -11,11 +14,13 @@ public class NewsTag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "news_id")
-    private long newsId;
+    @ManyToOne
+    @JoinColumn(name = "news_id")
+    private News news;
 
-    @Column(name = "tag_id")
-    private long tagId;
+    @ManyToOne
+    @JoinColumn(name = "tag_id")
+    private Tag tag;
 
     @Column(name = "main_tag")
     private long mainTag;
@@ -28,27 +33,27 @@ public class NewsTag {
         this.id = id;
     }
 
-    public long getNewsId() {
-        return newsId;
-    }
-
-    public void setNewsId(long newsId) {
-        this.newsId = newsId;
-    }
-
-    public long getTagId() {
-        return tagId;
-    }
-
-    public void setTagId(long tagId) {
-        this.tagId = tagId;
-    }
-
     public long getMainTag() {
         return mainTag;
     }
 
     public void setMainTag(long mainTag) {
         this.mainTag = mainTag;
+    }
+
+    public News getNews() {
+        return news;
+    }
+
+    public void setNews(News news) {
+        this.news = news;
+    }
+
+    public Tag getTag() {
+        return tag;
+    }
+
+    public void setTag(Tag tag) {
+        this.tag = tag;
     }
 }

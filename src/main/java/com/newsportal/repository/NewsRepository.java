@@ -21,18 +21,19 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     // 1. 25 последних новостей с учетом приоритета
     @Query("SELECT new com.newsportal.dto.NewsInfoDTO(n.id, u.username, n.title, n.imageUrl, n.views, n.publicAt, t.tagName) " +
             "FROM News n JOIN n.user u " +
-            "JOIN NewsTag nt ON n.id = nt.newsId " +
-            "JOIN Tag t ON nt.tagId = t.id " +
+            "JOIN NewsTag nt ON n.id = nt.news.id " +
+            "JOIN Tag t ON nt.tag.id = t.id " +
             "WHERE n.statusId = 1 AND n.publicAt <= CURRENT_TIMESTAMP " +
             "AND (n.unpublicAt IS NULL OR n.unpublicAt > CURRENT_TIMESTAMP) " +
             "ORDER BY n.publicAt DESC, n.priority DESC")
     List<NewsInfoDTO> findTop25News(Pageable pageable);
 
+
     // 2. 4 новости за сегодня с наибольшими просмотрами
     @Query("SELECT new com.newsportal.dto.NewsInfoDTO(n.id, u.username, n.title, n.imageUrl, n.views, n.publicAt, t.tagName) " +
             "FROM News n JOIN n.user u " +
-            "JOIN NewsTag nt ON n.id = nt.newsId " +
-            "JOIN Tag t ON nt.tagId = t.id " +
+            "JOIN NewsTag nt ON n.id = nt.news.id " +
+            "JOIN Tag t ON nt.tag.id = t.id " +
             "WHERE n.statusId = 1 AND n.publicAt BETWEEN :startOfDay AND :endOfDay " +
             "AND (n.unpublicAt IS NULL OR n.unpublicAt > CURRENT_TIMESTAMP) " +
             "ORDER BY n.views DESC")
@@ -41,8 +42,8 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     // 3. 4 последние новости определенного автора за сегодня
     @Query("SELECT new com.newsportal.dto.NewsInfoDTO(n.id, u.username, n.title, n.imageUrl, n.views, n.publicAt, t.tagName) " +
             "FROM News n JOIN n.user u " +
-            "JOIN NewsTag nt ON n.id = nt.newsId " +
-            "JOIN Tag t ON nt.tagId = t.id " +
+            "JOIN NewsTag nt ON n.id = nt.news.id " +
+            "JOIN Tag t ON nt.tag.id = t.id " +
             "WHERE u.id = :authorUserId AND n.statusId = 1 " +
             "AND n.publicAt BETWEEN :startOfDay AND :endOfDay " +
             "AND (n.unpublicAt IS NULL OR n.unpublicAt > CURRENT_TIMESTAMP) " +
@@ -55,8 +56,8 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     // 4. Последняя главная новость
     @Query("SELECT new com.newsportal.dto.NewsInfoDTO(n.id, u.username, n.title, n.imageUrl, n.views, n.publicAt, t.tagName) " +
             "FROM News n JOIN n.user u " +
-            "JOIN NewsTag nt ON n.id = nt.newsId " +
-            "JOIN Tag t ON nt.tagId = t.id " +
+            "JOIN NewsTag nt ON n.id = nt.news.id " +
+            "JOIN Tag t ON nt.tag.id = t.id " +
             "WHERE n.statusId = 1 AND n.isMainNews = 1 " +
             "AND n.publicAt <= CURRENT_TIMESTAMP " +
             "AND (n.unpublicAt IS NULL OR n.unpublicAt > CURRENT_TIMESTAMP) " +
@@ -66,8 +67,8 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     // 5. 25 новостей за определенную дату
     @Query("SELECT new com.newsportal.dto.NewsInfoDTO(n.id, u.username, n.title, n.imageUrl, n.views, n.publicAt, t.tagName) " +
             "FROM News n JOIN n.user u " +
-            "JOIN NewsTag nt ON n.id = nt.newsId " +
-            "JOIN Tag t ON nt.tagId = t.id " +
+            "JOIN NewsTag nt ON n.id = nt.news.id " +
+            "JOIN Tag t ON nt.tag.id = t.id " +
             "WHERE n.statusId = 1 AND n.publicAt BETWEEN :startOfDay AND :endOfDay " +
             "AND (n.unpublicAt IS NULL OR n.unpublicAt > CURRENT_TIMESTAMP) " +
             "ORDER BY n.priority DESC, n.publicAt DESC")
@@ -79,8 +80,8 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     //7. Загрузить еще
     @Query("SELECT new com.newsportal.dto.NewsInfoDTO(n.id, u.username, n.title, n.imageUrl, n.views, n.publicAt, t.tagName) " +
             "FROM News n JOIN n.user u " +
-            "JOIN NewsTag nt ON n.id = nt.newsId " +
-            "JOIN Tag t ON nt.tagId = t.id " +
+            "JOIN NewsTag nt ON n.id = nt.news.id " +
+            "JOIN Tag t ON nt.tag.id = t.id " +
             "WHERE n.statusId = 1 AND n.publicAt <= CURRENT_TIMESTAMP " +
             "AND (n.unpublicAt IS NULL OR n.unpublicAt > CURRENT_TIMESTAMP) " +
             "ORDER BY n.publicAt DESC, n.priority DESC")
@@ -88,26 +89,27 @@ public interface NewsRepository extends JpaRepository<News, Long> {
 
     @Query("SELECT DISTINCT new com.newsportal.dto.NewsInfoDTO(n.id, u.username, n.title, n.imageUrl, n.views, n.publicAt, t.tagName) " +
             "FROM News n JOIN n.user u " +
-            "JOIN NewsTag nt ON n.id = nt.newsId " +
-            "JOIN Tag t ON nt.tagId = t.id " +
+            "JOIN n.newsTags nt " +
+            "JOIN nt.tag t " +
             "WHERE (LOWER(u.username) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
             "LOWER(n.title) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
             "LOWER(n.content) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
             "EXISTS (" +
             "    SELECT 1 FROM NewsTag nt1 " +
-            "    JOIN Tag t1 ON nt1.tagId = t1.id " +
-            "    WHERE nt.newsId = n.id AND " +
-            "    LOCATE(LOWER(t.tagName), LOWER(:keyword)) <> 0" +
+            "    JOIN Tag t1 ON nt1.tag.id = t1.id " +
+            "    WHERE nt.news.id = n.id AND " +
+            "    LOCATE(LOWER(t1.tagName), LOWER(:keyword)) <> 0" +
             ") " +
             ") " +
             "AND n.statusId = 1 AND n.publicAt <= CURRENT_TIMESTAMP " +
             "AND (n.unpublicAt IS NULL OR n.unpublicAt > CURRENT_TIMESTAMP)")
     List<NewsInfoDTO> search(@Param("keyword") String keyword);
 
+
     @Query("SELECT DISTINCT new com.newsportal.dto.NewsInfoDTO(n.id, u.username, n.title, n.imageUrl, n.views, n.publicAt, t.tagName) " +
             "FROM News n JOIN n.user u " +
-            "JOIN NewsTag nt ON n.id = nt.newsId " +
-            "JOIN Tag t ON nt.tagId = t.id " +
+            "JOIN NewsTag nt ON n.id = nt.news.id " +
+            "JOIN Tag t ON nt.tag.id = t.id " +
             "WHERE " +
             "LOWER(t.tagName) LIKE LOWER(CONCAT('%', :tag, '%')) " +
             "AND n.statusId = 1 AND n.publicAt <= CURRENT_TIMESTAMP " +
@@ -117,14 +119,14 @@ public interface NewsRepository extends JpaRepository<News, Long> {
 
     @Query("SELECT DISTINCT new com.newsportal.dto.NewsInfoDTO(n.id, u.username, n.title, n.imageUrl, n.views, n.publicAt, t.tagName) " +
             "FROM News n JOIN n.user u " +
-            "JOIN NewsTag nt ON n.id = nt.newsId " +
-            "JOIN Tag t ON nt.tagId = t.id " +
+            "JOIN NewsTag nt ON n.id = nt.news.id " +
+            "JOIN Tag t ON nt.tag.id = t.id " +
             "WHERE( " +
             "LOCATE(LOWER(t.tagName), LOWER(:tags)) <> 0 AND " +
             "n.id IN (" +
             "    SELECT n2.id " +
             "    FROM News n2 " +
-            "    JOIN NewsTag nt2 ON n2.id = nt2.newsId " +
+            "    JOIN NewsTag nt2 ON n2.id = nt2.news.id " +
             "    JOIN Tag t2 ON nt2.mainTag = t2.id " +
             "    WHERE t2.tagName = t.tagName " +
             "    ORDER BY n2.publicAt DESC " +

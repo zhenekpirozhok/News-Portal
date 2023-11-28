@@ -3,10 +3,7 @@ package com.newsportal.service;
 import com.newsportal.dto.NewsDTO;
 import com.newsportal.dto.NewsInfoDTO;
 import com.newsportal.dto.NewsUpdateDTO;
-import com.newsportal.model.Likes;
-import com.newsportal.model.News;
-import com.newsportal.model.Tag;
-import com.newsportal.model.User;
+import com.newsportal.model.*;
 import com.newsportal.repository.LikesRepository;
 import com.newsportal.repository.NewsRepository;
 import com.newsportal.repository.UserRepository;
@@ -89,8 +86,8 @@ public class NewsService {
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Author not found"));
 
             Set<String> tagNames = new HashSet<>();
-            for (Tag tag : news.getTags()) {
-                tagNames.add(tag.getTagName());
+            for (NewsTag newsTag : news.getNewsTags()) {
+                tagNames.add(String.valueOf(newsTag.getTag().getTagName()));
             }
 
             // Convert to DTO
