@@ -42,7 +42,7 @@ const OneNewsPage = () => {
           views={currentNews.views}
         />
         <ShareOpinion />
-        <p style={{ fontSize: "16px", marginTop: "50px" }}>Comments(22)</p>
+        <p style={{ fontSize: "16px", marginTop: "50px" }}>Comments(1)</p>
         <CommentItem
           authorName={users[0].username}
           avatarUrl={null}

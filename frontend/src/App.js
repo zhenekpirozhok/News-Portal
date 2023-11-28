@@ -12,6 +12,7 @@ import { Provider } from "react-redux";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import SignInForm from "./components/SignInForm/SignInForm";
 import SignInAdmin from "./components/SignInAdmin/SignInAdmin";
+import ConfirmationPage from "./pages/ConfirmationPage";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/admin" element={<AdminPage />}/>
           <Route path="/signInAdmin" element={<SignInAdmin />}/>
           <Route path="/register" element={<RegisterForm />}/>
+          <Route path="/confirmationPage" element={<ConfirmationPage />}/>
         </Routes>
       </Router>
     </div>
