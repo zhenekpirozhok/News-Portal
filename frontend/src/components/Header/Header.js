@@ -5,6 +5,7 @@ import "./Header.css"; // Import the CSS file
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
 import { Link, useLocation } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 const Header = ({ user, isSearchVisible, categories }) => {
   const items = categories.map((category) => ({
@@ -15,6 +16,7 @@ const Header = ({ user, isSearchVisible, categories }) => {
   }));
 
   const location = useLocation();
+  const { username } = useSelector((state) => state.auth);
 
   return (
     <Flex justify="space-between" align="center" className="header-container">
@@ -37,7 +39,7 @@ const Header = ({ user, isSearchVisible, categories }) => {
         {isSearchVisible && (
           <Input placeholder="Search" className="search-input" />
         )}
-        {user ? (
+        {username ? (
           <a href="/profile">{user.username}</a>
         ) : (
           <a href="/login">Log In</a>
