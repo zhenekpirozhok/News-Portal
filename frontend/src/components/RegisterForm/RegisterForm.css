@@ -1,4 +1,4 @@
-.signin-container {
+.register-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7,14 +7,15 @@
     background-color: white;
   }
 
-.signin-form-title {
+.register-form-title {
   font-size: 18px;
   font-weight: 400;
   font-family: 'Inter';
+
 }
 
-.signin-form {
-    max-width: 300px;
+.register-form {
+    max-width: 400px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #d9d9d9;
@@ -22,15 +23,15 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .signin-form-button {
+  .register-form-button {
     width: 100%;
     background-color: black;
   }
   
-  .signin-form-forgot {
+  .register-form-forgot {
     float: right;
   }
   
-  .signin-form-button-wrapper {
+  .register-form-button-wrapper {
     margin-top: 10px;
   }

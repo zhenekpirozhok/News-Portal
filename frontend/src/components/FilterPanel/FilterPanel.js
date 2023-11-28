@@ -3,13 +3,13 @@ import { Flex } from "antd";
 import { DatePicker, Select } from "antd";
 import "./FilterPanel.css";
 
-const FilterPanel = ({ onDateFilterChange, onNewsPerPageChange }) => {
+const FilterPanel = ({ onDateFilterChange, setNewsPerPage }) => {
   const handleDateFilterChange = (date, dateString) => {
     onDateFilterChange(dateString);
   };
 
   const handleNewsPerPageChange = (value) => {
-    onNewsPerPageChange(value);
+    setNewsPerPage(value);
   };
 
   return (

@@ -187,8 +187,8 @@
     "id": 21,
     "title": "Vivamus Eu Eros Inceptos",
     "category": {
-    "id": 6,
-    "name": "Entertainment"
+      "id": 6,
+      "name": "Entertainment"
     },
     "image": "https://placekitten.com/800/400"
   },
