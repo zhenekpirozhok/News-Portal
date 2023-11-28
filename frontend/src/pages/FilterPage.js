@@ -18,22 +18,23 @@ const FilterPage = () => {
 
   const onDateFilterChange = (date) => {
     setSelectedDate(date);
-  }
+  };
 
   const handleNewsPerPageChange = (newsPerPage) => {
     setNewsPerPage(newsPerPage);
   };
 
   const loadMoreNews = () => {
-    setNewsPerPage(newsPerPage*2);
+    setNewsPerPage(newsPerPage * 2);
   };
 
-  let filteredNews = news.filter((item) => {
-    return item.date === selectedDate;
-  });
-
-  if (!selectedDate) {
-    filteredNews = news.slice(0,newsPerPage);
+  let filteredNews = [];
+  if (selectedDate) {
+    filteredNews = news.filter((item) => {
+      return item.date === selectedDate.split("-").reverse().join(".");
+    });
+  } else {
+    filteredNews = news.slice(0, newsPerPage);
   }
 
   const style = {
@@ -58,12 +59,16 @@ const FilterPage = () => {
         />
         <NewsList newsList={filteredNews.slice(0, newsPerPage)} />
         <div style={styleContainer}>
-          <Button style={style} onClick={loadMoreNews}> See more </Button>
+          <Button style={style} onClick={loadMoreNews}>
+            {" "}
+            See more{" "}
+          </Button>
         </div>
       </Section>
       <Footer />
     </div>
   );
 };
+
 
 export default FilterPage;
