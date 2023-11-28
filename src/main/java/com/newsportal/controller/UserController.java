@@ -23,7 +23,7 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
         return userService.findUserById(id)
-                .map(user -> new UserDTO( user.getUsername(), user.getEmail(), user.getRole())) // Convert User to UserDTO
+                .map(user -> new UserDTO(user.getUsername(), user.getEmail(), user.getRole())) // Convert User to UserDTO
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -34,7 +34,7 @@ public class UserController {
         if (currentUser == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User is not logged in.");
         }
-        UserDTO userDTO = new UserDTO( currentUser.getUsername(), currentUser.getEmail(), currentUser.getRole());
+        UserDTO userDTO = new UserDTO(currentUser.getUsername(), currentUser.getEmail(), currentUser.getRole());
         return ResponseEntity.ok(userDTO);
     }
 
@@ -61,7 +61,7 @@ public class UserController {
 
     @GetMapping("/admins")
     public ResponseEntity<?> getAllAdminUsers() {
-      if (!userService.isCurrentUserAdmin()) {
+        if (!userService.isCurrentUserAdmin()) {
 
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied.");
         }
@@ -85,7 +85,6 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllWaitingUsers());
     }
 
-
     @PutMapping("/update")
     public ResponseEntity<String> updateUSer(@RequestBody UserUpdateDTO userUpdateDTO) {
         if (!userService.isCurrentUserAdmin()) {
@@ -94,7 +93,4 @@ public class UserController {
         userService.updateUser(userUpdateDTO);
         return ResponseEntity.ok("User updated successfully");
     }
-
-
-
 }

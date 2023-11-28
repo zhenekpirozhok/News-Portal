@@ -18,13 +18,13 @@ import java.util.Optional;
 @Repository
 public interface NewsRepository extends JpaRepository<News, Long> {
 
-  // 1. 25 последних новостей с учетом приоритета
-  @Query("SELECT new com.newsportal.dto.NewsInfoDTO(u.username, n.title, n.imageUrl, n.views, n.publicAt) " +
-          "FROM News n JOIN n.user u " +
-          "WHERE n.statusId = 1 AND n.publicAt <= CURRENT_TIMESTAMP " +
-          "AND (n.unpublicAt IS NULL OR n.unpublicAt > CURRENT_TIMESTAMP) " +
-          "ORDER BY n.publicAt DESC, n.priority DESC")
-  List<NewsInfoDTO> findTop25News(Pageable pageable);
+    // 1. 25 последних новостей с учетом приоритета
+    @Query("SELECT new com.newsportal.dto.NewsInfoDTO(u.username, n.title, n.imageUrl, n.views, n.publicAt) " +
+            "FROM News n JOIN n.user u " +
+            "WHERE n.statusId = 1 AND n.publicAt <= CURRENT_TIMESTAMP " +
+            "AND (n.unpublicAt IS NULL OR n.unpublicAt > CURRENT_TIMESTAMP) " +
+            "ORDER BY n.publicAt DESC, n.priority DESC")
+    List<NewsInfoDTO> findTop25News(Pageable pageable);
 
     // 2. 4 новости за сегодня с наибольшими просмотрами
     @Query("SELECT new com.newsportal.dto.NewsInfoDTO(u.username, n.title, n.imageUrl, n.views, n.publicAt) " +
@@ -34,46 +34,37 @@ public interface NewsRepository extends JpaRepository<News, Long> {
             "ORDER BY n.views DESC")
     Page<NewsInfoDTO> findTop4TodayNewsByViews(LocalDateTime startOfDay, LocalDateTime endOfDay, Pageable pageable);
 
+    // 3. 4 последние новости определенного автора за сегодня
+    @Query("SELECT new com.newsportal.dto.NewsInfoDTO(u.username, n.title, n.imageUrl, n.views, n.publicAt) " +
+            "FROM News n JOIN n.user u " +
+            "WHERE u.id = :authorUserId AND n.statusId = 1 " +
+            "AND n.publicAt BETWEEN :startOfDay AND :endOfDay " +
+            "AND (n.unpublicAt IS NULL OR n.unpublicAt > CURRENT_TIMESTAMP) " +
+            "ORDER BY n.priority DESC, n.publicAt DESC")
+    List<NewsInfoDTO> findTopNewsByAuthorToday(@Param("authorUserId") Long authorUserId,
+                                               @Param("startOfDay") LocalDateTime startOfDay,
+                                               @Param("endOfDay") LocalDateTime endOfDay,
+                                               Pageable pageable);
 
-  // 3. 4 последние новости определенного автора за сегодня
-  @Query("SELECT new com.newsportal.dto.NewsInfoDTO(u.username, n.title, n.imageUrl, n.views, n.publicAt) " +
-          "FROM News n JOIN n.user u " +
-          "WHERE u.id = :authorUserId AND n.statusId = 1 " +
-          "AND n.publicAt BETWEEN :startOfDay AND :endOfDay " +
-          "AND (n.unpublicAt IS NULL OR n.unpublicAt > CURRENT_TIMESTAMP) " +
-          "ORDER BY n.priority DESC, n.publicAt DESC")
-  List<NewsInfoDTO> findTopNewsByAuthorToday(@Param("authorUserId") Long authorUserId,
-                                             @Param("startOfDay") LocalDateTime startOfDay,
-                                             @Param("endOfDay") LocalDateTime endOfDay,
-                                             Pageable pageable);
+    // 4. Последняя главная новость
+    @Query("SELECT new com.newsportal.dto.NewsInfoDTO(u.username, n.title, n.imageUrl, n.views, n.publicAt) " +
+            "FROM News n JOIN n.user u " +
+            "WHERE n.statusId = 1 AND n.isMainNews = 1 " +
+            "AND n.publicAt <= CURRENT_TIMESTAMP " +
+            "AND (n.unpublicAt IS NULL OR n.unpublicAt > CURRENT_TIMESTAMP) " +
+            "ORDER BY n.publicAt DESC")
+    List<NewsInfoDTO> findMainNews(Pageable pageable);
 
+    // 5. 25 новостей за определенную дату
+    @Query("SELECT new com.newsportal.dto.NewsInfoDTO(u.username, n.title, n.imageUrl, n.views, n.publicAt) " +
+            "FROM News n JOIN n.user u " +
+            "WHERE n.statusId = 1 AND n.publicAt BETWEEN :startOfDay AND :endOfDay " +
+            "AND (n.unpublicAt IS NULL OR n.unpublicAt > CURRENT_TIMESTAMP) " +
+            "ORDER BY n.priority DESC, n.publicAt DESC")
+    Page<NewsInfoDTO> findNewsByDate(LocalDateTime startOfDay, LocalDateTime endOfDay, Pageable pageable);
 
-  // 4. Последняя главная новость
-  @Query("SELECT new com.newsportal.dto.NewsInfoDTO(u.username, n.title, n.imageUrl, n.views, n.publicAt) " +
-          "FROM News n JOIN n.user u " +
-          "WHERE n.statusId = 1 AND n.isMainNews = 1 " +
-          "AND n.publicAt <= CURRENT_TIMESTAMP " +
-          "AND (n.unpublicAt IS NULL OR n.unpublicAt > CURRENT_TIMESTAMP) " +
-          "ORDER BY n.publicAt DESC")
-  List<NewsInfoDTO> findMainNews(Pageable pageable);
-
-
-
-
-
-  // 5. 25 новостей за определенную дату
-  @Query("SELECT new com.newsportal.dto.NewsInfoDTO(u.username, n.title, n.imageUrl, n.views, n.publicAt) " +
-          "FROM News n JOIN n.user u " +
-          "WHERE n.statusId = 1 AND n.publicAt BETWEEN :startOfDay AND :endOfDay " +
-          "AND (n.unpublicAt IS NULL OR n.unpublicAt > CURRENT_TIMESTAMP) " +
-          "ORDER BY n.priority DESC, n.publicAt DESC")
-  Page<NewsInfoDTO> findNewsByDate(LocalDateTime startOfDay, LocalDateTime endOfDay, Pageable pageable);
-
-
-
-  // 6. Новость по ID
+    // 6. Новость по ID
     Optional<News> findById(Long id);
-
 
     //7. Загрузить еще
     @Query("SELECT new com.newsportal.dto.NewsInfoDTO(u.username, n.title, n.imageUrl, n.views, n.publicAt) " +
@@ -83,18 +74,49 @@ public interface NewsRepository extends JpaRepository<News, Long> {
             "ORDER BY n.publicAt DESC, n.priority DESC")
     Page<NewsInfoDTO> findNewsWithPagination(Pageable pageable);
 
+    @Query("SELECT new com.newsportal.dto.NewsInfoDTO(u.username, n.title, n.imageUrl, n.views, n.publicAt) " +
+            "FROM News n JOIN n.user u " +
+            "WHERE (LOWER(u.username) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
+            "LOWER(n.title) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
+            "LOWER(n.content) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
+            "EXISTS (" +
+            "    SELECT 1 FROM NewsTag nt " +
+            "    JOIN Tag t ON nt.tagId = t.id " +
+            "    WHERE nt.newsId = n.id AND " +
+            "    LOCATE(LOWER(t.tagName), LOWER(:keyword)) <> 0" +
+            ") " +
+            ") " +
+            "AND n.statusId = 1 AND n.publicAt <= CURRENT_TIMESTAMP " +
+            "AND (n.unpublicAt IS NULL OR n.unpublicAt > CURRENT_TIMESTAMP)")
+    List<NewsInfoDTO> searchNewsByKeyword(@Param("keyword") String keyword);
 
-  @Query("SELECT new com.newsportal.dto.NewsInfoDTO(u.username, n.title, n.imageUrl, n.views, n.publicAt) " +
-          "FROM News n JOIN n.user u " +
-          "WHERE (LOWER(u.username) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
-          "LOWER(n.title) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
-          "LOWER(n.content) LIKE LOWER(CONCAT('%', :keyword, '%'))) " +
-          "AND n.statusId = 1 AND n.publicAt <= CURRENT_TIMESTAMP " +
-          "AND (n.unpublicAt IS NULL OR n.unpublicAt > CURRENT_TIMESTAMP)")
-  List<NewsInfoDTO> search(@Param("keyword") String keyword);
+    @Query("SELECT DISTINCT new com.newsportal.dto.NewsInfoDTO(u.username, n.title, n.imageUrl, n.views, n.publicAt) " +
+            "FROM News n JOIN n.user u " +
+            "JOIN NewsTag nt ON n.id = nt.newsId " +
+            "JOIN Tag t ON nt.tagId = t.id " +
+            "WHERE " +
+            "LOWER(t.tagName) LIKE LOWER(CONCAT('%', :tag, '%')) ")
+    List<NewsInfoDTO> searchNewsByTag(@Param("tag") String tag);
 
+    @Query("SELECT DISTINCT new com.newsportal.dto.NewsInfoDTO(u.username, n.title, n.imageUrl, n.views, n.publicAt) " +
+            "FROM News n JOIN n.user u " +
+            "JOIN NewsTag nt ON n.id = nt.newsId " +
+            "JOIN Tag t ON nt.tagId = t.id " +
+            "WHERE " +
+            "LOCATE(LOWER(t.tagName), LOWER(:tags)) <> 0 AND " +
+            "n.id IN (" +
+            "    SELECT n2.id " +
+            "    FROM News n2 " +
+            "    JOIN NewsTag nt2 ON n2.id = nt2.newsId " +
+            "    JOIN Tag t2 ON nt2.mainTag = t2.id " +
+            "    WHERE t2.tagName = t.tagName " +
+            "    ORDER BY n2.publicAt DESC " +
+            "    LIMIT 12" +
+            ") "
+    )
+    List<NewsInfoDTO> findPageOfNewsByTags(@Param("tags") String tags);
 
-  List<News> findByAuthorUserId(Long authorUserId, Sort sort);
+    List<News> findByAuthorUserId(Long authorUserId, Sort sort);
+
     List<News> findByPublicAt(Instant date, Sort sort);
-
-    }
+}

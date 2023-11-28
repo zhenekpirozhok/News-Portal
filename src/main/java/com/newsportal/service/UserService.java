@@ -20,12 +20,12 @@ public class UserService {
     private UserRepository userRepository;
 
 
-
     public Optional<User> findUserById(Long id) {
         return userRepository.findById(id);
     }
+
     @Transactional
-    public  void createUser(String username, String password, String email) {
+    public void createUser(String username, String password, String email) {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
@@ -37,7 +37,7 @@ public class UserService {
     }
 
     @Transactional
-    public  void createWaiting(String username, String password, String email) {
+    public void createWaiting(String username, String password, String email) {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
@@ -65,25 +65,21 @@ public class UserService {
         return userRepository.findByRole("waiting", Sort.by(Sort.Direction.DESC, "createdAt"));
     }
 
-
     public void updateUser(UserUpdateDTO userUpdateDTO) {
         userRepository.findById(userUpdateDTO.getId()).ifPresent(user -> {
-            if(userUpdateDTO.getUsername() != null) user.setUsername(userUpdateDTO.getUsername());
-            if(userUpdateDTO.getPassword() != null) user.setPassword(userUpdateDTO.getPassword());
-            if(userUpdateDTO.getEmail() != null) user.setEmail(userUpdateDTO.getEmail());
-            if(userUpdateDTO.getRole() != null) user.setRole(userUpdateDTO.getRole());
-            if(userUpdateDTO.getStatus() != null) user.setStatus(userUpdateDTO.getStatus());
-            if(userUpdateDTO.getCreatedAt() != null) user.setCreatedAt(userUpdateDTO.getCreatedAt());
-
+            if (userUpdateDTO.getUsername() != null) user.setUsername(userUpdateDTO.getUsername());
+            if (userUpdateDTO.getPassword() != null) user.setPassword(userUpdateDTO.getPassword());
+            if (userUpdateDTO.getEmail() != null) user.setEmail(userUpdateDTO.getEmail());
+            if (userUpdateDTO.getRole() != null) user.setRole(userUpdateDTO.getRole());
+            if (userUpdateDTO.getStatus() != null) user.setStatus(userUpdateDTO.getStatus());
+            if (userUpdateDTO.getCreatedAt() != null) user.setCreatedAt(userUpdateDTO.getCreatedAt());
 
             userRepository.save(user);
         });
     }
 
-
     @Autowired
     private HttpSession session; // Inject the session
-
 
     public boolean loginUser(String username, String password) {
         Optional<User> user = userRepository.findByUsername(username);
@@ -94,7 +90,6 @@ public class UserService {
         return false;
     }
 
-
     public void logoutUser() {
         session.invalidate(); // Invalidate the session
     }
@@ -104,10 +99,8 @@ public class UserService {
         return user != null && "admin".equals(user.getRole()) && user.getStatus() == 1;
     }
 
-
     public boolean isCurrentUserUser() {
         User user = (User) session.getAttribute("user");
         return user != null && (user.getStatus() == 1) && ("user".equals(user.getRole()) || "admin".equals(user.getRole()));
     }
-
 }

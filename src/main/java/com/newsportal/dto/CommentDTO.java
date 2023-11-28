@@ -8,8 +8,9 @@ public class CommentDTO {
     private String content;
     private Instant createdAt;
 
+    public CommentDTO() {
 
-
+    }
 
     public CommentDTO(String username, Long newsId, String content, Instant createdAt) {
         this.username = username;

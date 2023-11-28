@@ -30,10 +30,11 @@ public class NewsController {
     public NewsController(NewsService newsService) {
         this.newsService = newsService;
     }
+
     @Autowired
     private UserService userService;
 
-      @GetMapping("/top25")
+    @GetMapping("/top25")
     public ResponseEntity<List<NewsInfoDTO>> getTop25News() {
         return ResponseEntity.ok(newsService.getTop25News());
     }
@@ -49,14 +50,11 @@ public class NewsController {
         return ResponseEntity.ok(newsList);
     }
 
-
     @GetMapping("/main")
     public ResponseEntity<List<NewsInfoDTO>> getMainNews() {
         return ResponseEntity.ok(newsService.getMainNews());
 
     }
-
-
 
     @GetMapping("/date/{date}")
     public ResponseEntity<List<NewsInfoDTO>> getNewsByDate(@PathVariable String date) {
@@ -85,16 +83,27 @@ public class NewsController {
         if (!userService.isCurrentUserAdmin()) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied.");
         }
-        newsService.createNews( newsDTO.getTitle(), newsDTO.getContent(), newsDTO.getImageUrl());
+        newsService.createNews(newsDTO.getTitle(), newsDTO.getContent(), newsDTO.getImageUrl());
         return ResponseEntity.ok("News created successfully");
     }
 
     @GetMapping("/search/{keyword}")
-    public ResponseEntity<List<NewsInfoDTO>> searchNews(@PathVariable String keyword) {
-        List<NewsInfoDTO> searchResults = newsService.searchNews(keyword);
+    public ResponseEntity<List<NewsInfoDTO>> searchNewsByKeyword(@PathVariable String keyword) {
+        List<NewsInfoDTO> searchResults = newsService.searchNewsByKeyword(keyword);
         return ResponseEntity.ok(searchResults);
     }
 
+    @GetMapping("/searchPageTag/{tag}")
+    public ResponseEntity<List<NewsInfoDTO>> searchNewsByTag(@PathVariable String tag) {
+        List<NewsInfoDTO> searchResults = newsService.searchNewsByTag(tag);
+        return ResponseEntity.ok(searchResults);
+    }
+
+    @GetMapping("/searchTags/{tags}")
+    public ResponseEntity<List<NewsInfoDTO>> findPageOfNewsByTags(@PathVariable String tags) {
+        List<NewsInfoDTO> result = newsService.findPageOfNewsByTags(tags);
+        return ResponseEntity.ok(result);
+    }
 
     @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteNews(@PathVariable Long id) {
@@ -105,7 +114,6 @@ public class NewsController {
         return ResponseEntity.ok("News item deleted successfully");
     }
 
-
     @PutMapping("/update")
     public ResponseEntity<String> updateNews(@RequestBody NewsUpdateDTO newsUpdateDTO) {
         if (!userService.isCurrentUserAdmin()) {
@@ -115,13 +123,12 @@ public class NewsController {
         return ResponseEntity.ok("News updated successfully");
     }
 
-
     @GetMapping("/all")
     public ResponseEntity<?> getAllNews() {
         if (!userService.isCurrentUserAdmin()) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied.");
         }
-          return ResponseEntity.ok(newsService.getAllNews());
+        return ResponseEntity.ok(newsService.getAllNews());
     }
 
     @GetMapping("/admin/{id}")
@@ -146,5 +153,13 @@ public class NewsController {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied.");
         }
         return ResponseEntity.ok(newsService.getNewsByAuthor(authorId));
+    }
+
+    @PostMapping("/like/{newsId}")
+    public ResponseEntity<String> toggleLike(@PathVariable Long newsId) {
+        if (!userService.isCurrentUserUser()) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied.");
+        }
+        return ResponseEntity.ok(newsService.toggleLike(newsId));
     }
 }

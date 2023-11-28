@@ -5,16 +5,14 @@ public class CommentCreateDTO {
     private Long newsId;
     private String content;
 
-
-    public CommentCreateDTO( Long newsId, String content) {
-
-        this.newsId = newsId;
-        this.content = content;
+    public CommentCreateDTO() {
 
     }
 
-
-
+    public CommentCreateDTO(Long newsId, String content) {
+        this.newsId = newsId;
+        this.content = content;
+    }
 
     public Long getNewsId() {
         return newsId;

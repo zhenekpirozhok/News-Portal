@@ -4,26 +4,32 @@ import java.time.Instant;
 
 public class NewsInfoDTO {
 
-    private String User;
+    private String user;
     private String title;
     private String imageUrl;
     private Integer views;
     private Instant publicAt;
+    private String mainTag;
 
-    public NewsInfoDTO(String User, String title, String imageUrl, Integer views, Instant publicAt) {
-        this.User = User;
+    public NewsInfoDTO(){
+
+    }
+
+    public NewsInfoDTO(String user, String title, String imageUrl, Integer views, Instant publicAt, String mainTag) {
+        this.user = user;
         this.title = title;
         this.imageUrl = imageUrl;
         this.views = views;
         this.publicAt = publicAt;
+        this.mainTag = mainTag;
     }
 
     public String getAuthorUsername() {
-        return User;
+        return user;
     }
 
-    public void setAuthorUsername(String User) {
-        this.User = User;
+    public void setAuthorUsername(String user) {
+        this.user = user;
     }
 
     public String getTitle() {
@@ -56,5 +62,13 @@ public class NewsInfoDTO {
 
     public void setPublicAt(Instant publicAt) {
         this.publicAt = publicAt;
+    }
+
+    public String getMainTag() {
+        return mainTag;
+    }
+
+    public void setMainTag(String mainTag) {
+        this.mainTag = mainTag;
     }
 }

@@ -8,19 +8,22 @@ public class NewsCreateDTO {
     private String content;
     private String imageUrl;
     private Integer views;
+    private Integer likes;
     private Instant publicAt;
 
 
-    public NewsCreateDTO(String title, String content, String imageUrl, Integer views, Instant publicAt) {
-
+    public NewsCreateDTO(String title, String content, String imageUrl, Integer views, Integer likes, Instant publicAt) {
         this.title = title;
         this.content = content;
         this.imageUrl = imageUrl;
         this.views = views;
+        this.likes = likes;
         this.publicAt = publicAt;
     }
 
+    public NewsCreateDTO() {
 
+    }
 
     public String getTitle() {
         return title;
@@ -52,6 +55,14 @@ public class NewsCreateDTO {
 
     public void setViews(Integer views) {
         this.views = views;
+    }
+
+    public Integer getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Integer likes) {
+        this.likes = likes;
     }
 
     public Instant getPublicAt() {

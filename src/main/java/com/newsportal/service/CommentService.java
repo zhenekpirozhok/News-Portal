@@ -42,7 +42,6 @@ public class CommentService {
     }
 
 
-
     @Transactional
     public void createComment(Long newsId, String content) {
         User currentUser = (User) session.getAttribute("user");
@@ -73,13 +72,13 @@ public class CommentService {
 
     public void updateComment(CommentUpdateDTO commentUpdateDTO) {
         commentRepository.findById(commentUpdateDTO.getId()).ifPresent(news -> {
-            if(commentUpdateDTO.getNewsId() != null) news.setNewsId(commentUpdateDTO.getNewsId());
-            if(commentUpdateDTO.getUserId() != null) news.setUserId(commentUpdateDTO.getUserId());
-            if(commentUpdateDTO.getContent() != null) news.setContent(commentUpdateDTO.getContent());
-            if(commentUpdateDTO.getUpdatedBy() != null) news.setUpdatedBy(commentUpdateDTO.getUpdatedBy());
-            if(commentUpdateDTO.getCreatedAt() != null) news.setCreatedAt(commentUpdateDTO.getCreatedAt());
-            if(commentUpdateDTO.getUpdatedAt() != null) news.setUpdatedAt(commentUpdateDTO.getUpdatedAt());
-            if(commentUpdateDTO.getStatusId() != null) news.setStatusId(commentUpdateDTO.getStatusId());
+            if (commentUpdateDTO.getNewsId() != null) news.setNewsId(commentUpdateDTO.getNewsId());
+            if (commentUpdateDTO.getUserId() != null) news.setUserId(commentUpdateDTO.getUserId());
+            if (commentUpdateDTO.getContent() != null) news.setContent(commentUpdateDTO.getContent());
+            if (commentUpdateDTO.getUpdatedBy() != null) news.setUpdatedBy(commentUpdateDTO.getUpdatedBy());
+            if (commentUpdateDTO.getCreatedAt() != null) news.setCreatedAt(commentUpdateDTO.getCreatedAt());
+            if (commentUpdateDTO.getUpdatedAt() != null) news.setUpdatedAt(commentUpdateDTO.getUpdatedAt());
+            if (commentUpdateDTO.getStatusId() != null) news.setStatusId(commentUpdateDTO.getStatusId());
 
 
             commentRepository.save(news);

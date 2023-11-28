@@ -24,7 +24,7 @@ public class CommentController {
     @Autowired
     private UserService userService;
 
-   @GetMapping("/{newsId}")
+    @GetMapping("/{newsId}")
     public ResponseEntity<List<CommentDTO>> getCommentsByNewsId(@PathVariable Long newsId) {
         List<CommentDTO> comments = commentService.getCommentsByNewsId(newsId);
         return ResponseEntity.ok(comments);
@@ -38,7 +38,6 @@ public class CommentController {
         commentService.createComment(commentCreateDTO.getNewsId(), commentCreateDTO.getContent());
         return ResponseEntity.ok("Comment created successfully");
     }
-
 
     @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteNews(@PathVariable Long id) {
@@ -54,7 +53,7 @@ public class CommentController {
         if (!userService.isCurrentUserAdmin()) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied.");
         }
-       return ResponseEntity.ok(commentService.getAllComments());
+        return ResponseEntity.ok(commentService.getAllComments());
     }
 
     @GetMapping("/admin_date/{date}")

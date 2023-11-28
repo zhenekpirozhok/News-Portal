@@ -4,14 +4,18 @@ import java.time.Instant;
 
 public class CommentUpdateDTO {
 
-        private Long id;
-        private Long newsId;
-        private Long userId;
-        private String content;
-        private Long updatedBy;
-        private Instant createdAt;
-        private Instant updatedAt;
-        private Long statusId;
+    private Long id;
+    private Long newsId;
+    private Long userId;
+    private String content;
+    private Long updatedBy;
+    private Instant createdAt;
+    private Instant updatedAt;
+    private Long statusId;
+
+    public CommentUpdateDTO() {
+
+    }
 
     public CommentUpdateDTO(Long id, Long newsId, Long userId, String content, Long updatedBy, Instant createdAt, Instant updatedAt, Long statusId) {
         this.id = id;
@@ -88,5 +92,3 @@ public class CommentUpdateDTO {
         this.statusId = statusId;
     }
 }
-
-

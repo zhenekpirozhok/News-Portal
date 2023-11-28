@@ -7,12 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import java.time.Instant;
 import java.util.List;
+
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
     List<Comment> findByNewsId(Long newsId);
 
     List<Comment> findByCreatedAt(Instant date, Sort sort);
-
-
-
 }

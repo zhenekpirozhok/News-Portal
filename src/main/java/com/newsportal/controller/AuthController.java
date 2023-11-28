@@ -14,7 +14,6 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
-
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginDTO loginDTO) {
         if (userService.loginUser(loginDTO.getUsername(), loginDTO.getPassword())) {

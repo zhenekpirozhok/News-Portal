@@ -17,6 +17,10 @@ public class NewsUpdateDTO {
     private Instant unpublicAt;
     private Long updatedBy;
 
+    public NewsUpdateDTO(){
+
+    }
+
     public NewsUpdateDTO(Long id, Long authorUserId, String title, String content, String imageUrl, Integer isMainNews, Integer priority, Integer views, Integer likes, Long statusId, Instant publicAt, Instant unpublicAt, Long updatedBy) {
         this.id = id;
         this.authorUserId = authorUserId;

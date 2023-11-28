@@ -8,6 +8,7 @@ public class NewsTag {
 
     @Id
     @Column(name = "link_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "news_id")
