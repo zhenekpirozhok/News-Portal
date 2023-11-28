@@ -8,9 +8,20 @@ const SignInAdmin = () => {
     // You can add your sign-in logic here
   };
 
+  const style = {
+    width: "300px",
+    textAlign: "center",
+    fontSize: "12px",
+    marginTop: "0",
+  };
+
   return (
     <div className="signin-container">
       <h2 className="signin-form-title">Sign in as Admin</h2>
+      <p style={style}>
+        (Your request will be send to wait list for other admin to approve if
+        you're new)
+      </p>
       <Form
         name="signin-form"
         initialValues={{ remember: true }}
@@ -40,14 +51,15 @@ const SignInAdmin = () => {
         </Form.Item>
 
         <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="signin-form-button"
-          >
-            Sign In
-          </Button>
-           <a style={{marginTop: '80px'}} href="/register">Register now!</a> or<a href="/signInAdmin"> Sign in as admin</a>
+          <a href="/confirmationPage">
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="signin-form-button"
+            >
+              Sign In
+            </Button>
+          </a>
         </Form.Item>
       </Form>
     </div>
