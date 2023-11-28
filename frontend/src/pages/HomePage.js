@@ -8,6 +8,7 @@ import NewsList from '../components/NewsList/NewsList';
 import Footer from '../components/Footer/Footer';
 import getCategories from '../mockData/categories';
 import Section from "../components/Section/Section";
+import MyComponent from '../components/MyComponent';
 
 const HomePage = () => {
   const events = news.filter((news) => news.category.id === 1);
@@ -16,6 +17,7 @@ const HomePage = () => {
 
   return (
     <div>
+      <MyComponent />
       <Header user={null} isSearchVisible={false} categories={categories}/>
       <Section>
         <MainNews news={news[0]}/>

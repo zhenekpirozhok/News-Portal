@@ -1,12 +1,12 @@
 // Header.js
-import React from "react";
+import React, {useUser} from "react";
 import { Input, Flex } from "antd";
 import "./Header.css"; // Import the CSS file
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
 import { Link, useLocation } from 'react-router-dom';
 
-const Header = ({ user, isSearchVisible, categories }) => {
+const Header = ({user, isSearchVisible, categories }) => {
   const items = categories.map((category) => ({
     label: (
       <a href={`/category/${category.id}`}>{category.name}</a>
@@ -15,7 +15,6 @@ const Header = ({ user, isSearchVisible, categories }) => {
   }));
 
   const location = useLocation();
-
   return (
     <Flex justify="space-between" align="center" className="header-container">
       {/* Flex-box with links */}
@@ -40,7 +39,7 @@ const Header = ({ user, isSearchVisible, categories }) => {
         {user ? (
           <a href="/profile">{user.username}</a>
         ) : (
-          <a href="/login">Log In</a>
+          <a href="/login">Sign In</a>
         )}
       </Flex>
     </Flex>

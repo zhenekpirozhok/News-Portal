@@ -3,7 +3,6 @@ import { Row, Col, Tag } from 'antd';
 import NewsCard from '../NewsCard/NewsCard';
 import './NewsList.css';
 
-
 const NewsList = ({ category, newsList }) => {
   return (
     <div className="news-list">

@@ -6,10 +6,12 @@ import OneCategoryPage from "./pages/OneCategoryPage";
 import FilterPage from "./pages/FilterPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import OneNewsPage from "./pages/OneNewsPage";
-import SignInPage from "./pages/SignInPage";
 import AdminPage from "./pages/AdminPage";
 import store from "./redux/store";
 import { Provider } from "react-redux";
+import RegisterForm from "./components/RegisterForm/RegisterForm";
+import SignInForm from "./components/SignInForm/SignInForm";
+import SignInAdmin from "./components/SignInAdmin/SignInAdmin";
 
 function App() {
   return (
@@ -23,8 +25,10 @@ function App() {
           <Route path="/category/:categoryId" element={<OneCategoryPage />} />
           <Route path="/search" element={<SearchPage />}/>
           <Route path="/news" element={<FilterPage />} />
-          <Route path="/login" element={<SignInPage />}/>
+          <Route path="/login" element={<SignInForm />}/>
           <Route path="/admin" element={<AdminPage />}/>
+          <Route path="/signInAdmin" element={<SignInAdmin />}/>
+          <Route path="/register" element={<RegisterForm />}/>
         </Routes>
       </Router>
     </div>

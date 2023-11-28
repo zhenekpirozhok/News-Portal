@@ -1,8 +1,8 @@
 import React from "react";
 import { Form, Input, Button, Checkbox } from "antd";
-import "./SignInForm.css"; // Import your CSS file
+import "../SignInForm/SignInForm"; // Import your CSS file
 
-const SignInForm = () => {
+const SignInAdmin = () => {
   const onFinish = (values) => {
     console.log("Received values:", values);
     // You can add your sign-in logic here
@@ -10,7 +10,7 @@ const SignInForm = () => {
 
   return (
     <div className="signin-container">
-      <h2 className="signin-form-title">Sign in to enjoy all functionality!</h2>
+      <h2 className="signin-form-title">Sign in as Admin</h2>
       <Form
         name="signin-form"
         initialValues={{ remember: true }}
@@ -54,4 +54,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default SignInAdmin;
