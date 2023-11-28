@@ -1,12 +1,17 @@
 import React from "react";
 import { Form, Input, Button, Checkbox } from "antd";
 import "./SignInForm.css"; // Import your CSS file
+import { useDispatch } from "react-redux";
+import { signIn } from "../../redux/auth/actions";
+import { useState } from "react";
 
 const SignInForm = () => {
-  const onFinish = (values) => {
-    console.log("Received values:", values);
+
+  const onSignIn = (value) => {
+    alert("Received values:", value);
     // You can add your sign-in logic here
   };
+  
 
   return (
     <div className="signin-container">
@@ -14,7 +19,7 @@ const SignInForm = () => {
       <Form
         name="signin-form"
         initialValues={{ remember: true }}
-        onFinish={onFinish}
+        onFinish={(value) => onSignIn(value)}
         className="signin-form"
       >
         <Form.Item
