@@ -23,8 +23,6 @@ const AdminPage = () => {
         <Content style={{ margin: "24px 16px 0" }}>
             {selectedTab === '1' && (
               <div>
-                {/* Render content for the "Users" tab */}
-                <AdminFilterPanel />
                 <AddNewsWindow />
                 <NewsPage newsList={news}/>
               </div>

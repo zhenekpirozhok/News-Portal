@@ -10,5 +10,13 @@
   {
     "name": "Other",
     "id": 3
+  },
+  {
+    "name": "Technology",
+    "id": 4
+  },
+  {
+    "name": "Entertainment",
+    "id": 5
   }
 ]

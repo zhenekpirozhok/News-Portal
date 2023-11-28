@@ -1,16 +1,15 @@
 // NewsPage.js
 import React from 'react';
-import { Typography, Divider } from 'antd';
+import { Typography } from 'antd';
 import NewsLine from './NewsLine/NewsLine';
+import AdminFilterPanel from './AdminFilterPanel/AdminFilterPanel';
 
 const { Title } = Typography;
 
 const NewsPage = ({ newsList, onEdit, onDelete }) => {
   return (
     <div>
-      <Title level={2}>Latest News</Title>
-      <Divider />
-
+      <AdminFilterPanel />
       {newsList.map((news) => (
         <NewsLine key={news.id} news={news} onEdit={onEdit} onDelete={onDelete} />
       ))}

@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, React} from "react";
 import Header from "../components/Header/Header";
 import MainNews from "../components/MainNews/MainNews";
 import categories from "../mockData/categories.json";
@@ -14,10 +14,19 @@ import Section from "../components/Section/Section";
 import ShareOpinion from "../components/ShareOpinion/ShareOpinion";
 import CommentItem from "../components/CommentItem/CommentItem";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchNewsById, selectNewsById } from "../redux/news/newsSlice";
 
 const OneNewsPage = () => {
   const { newsId } = useParams();
   const currentNews = news.find((news) => news.id === +newsId);
+  // const currentNews = useSelector(selectNewsById(newsId));
+  // console.log(currentNews);
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(fetchNewsById(newsId));
+  // }, []);
 
   return (
     <div>
