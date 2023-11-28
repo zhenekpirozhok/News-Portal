@@ -4,6 +4,7 @@ import java.time.Instant;
 
 public class NewsInfoDTO {
 
+    private Long id;
     private String user;
     private String title;
     private String imageUrl;
@@ -15,7 +16,8 @@ public class NewsInfoDTO {
 
     }
 
-    public NewsInfoDTO(String user, String title, String imageUrl, Integer views, Instant publicAt, String mainTag) {
+    public NewsInfoDTO(Long id, String user, String title, String imageUrl, Integer views, Instant publicAt, String mainTag) {
+        this.id = id;
         this.user = user;
         this.title = title;
         this.imageUrl = imageUrl;
@@ -24,11 +26,19 @@ public class NewsInfoDTO {
         this.mainTag = mainTag;
     }
 
-    public String getAuthorUsername() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUser() {
         return user;
     }
 
-    public void setAuthorUsername(String user) {
+    public void setUser(String user) {
         this.user = user;
     }
 
