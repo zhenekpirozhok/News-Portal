@@ -1,8 +1,8 @@
 // Header.js
 import React, {useUser} from "react";
-import { Input, Flex } from "antd";
+import { Input, Flex, Button } from "antd";
 import "./Header.css"; // Import the CSS file
-import { DownOutlined } from "@ant-design/icons";
+import { DownOutlined, SearchOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from "react-redux";
@@ -62,7 +62,7 @@ const Header = ({user, isSearchVisible, categories }) => {
       {/* Flex-box with search field and login link */}
       <Flex className="header-links" gap={40} align="center">
         {isSearchVisible && (
-          <Search placeholder="input search text" onSearch={onSearch} enterButton />
+          <Search placeholder="input search text" onSearch={onSearch} enterButton={<Button icon={<SearchOutlined />} style={{ background: 'black', borderColor: 'black', color: 'white', opacity: '50%' }} /> } />
         )}
         {username ? (
           <a href="/profile">{username}</a>
