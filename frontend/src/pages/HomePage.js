@@ -18,13 +18,14 @@ const HomePage = () => {
   const categories = getCategories(news);
 
   const [mainNews, setMainNews] = useState([]);
+  const [topToday, setTopToday] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
+        const mainNewsresponse = await axios.get(
           "https://d0a8-78-62-142-17.ngrok-free.app/api/news/main",
           {
             headers: {
@@ -33,10 +34,21 @@ const HomePage = () => {
             },
           }
         );
-        console.log("[HomePage] response.data: ", response);
-        setMainNews(response.data);
+
+        const topTodayresponse = await axios.get(
+          "https://d0a8-78-62-142-17.ngrok-free.app/api/news/top-today",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "ngrok-skip-browser-warning": true,
+            },
+          }
+        )
+
+        setMainNews(mainNewsresponse.data);
+        setTopToday(topTodayresponse.data);
+        
       } catch {
-        console.log("[HomePage] error");
         setError("Failed to fetch main news");
       } finally {
         setLoading(false);
@@ -48,11 +60,12 @@ const HomePage = () => {
 
   return (
     <div>
-      <Header user={null} isSearchVisible={false} categories={categories} />
+      <Header user={null} isSearchVisible={true} categories={categories} />
       <Section>
         {loading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}
         {!loading && !error && <MainNews news={mainNews[0]} />}
+        <NewsList newsList={topToday} />
         <NewsList newsList={events} category={categories[0]} />
         <NewsList newsList={announcements} category={categories[1]} />
       </Section>
