@@ -5,6 +5,7 @@ import com.newsportal.dto.NewsInfoDTO;
 import com.newsportal.dto.NewsUpdateDTO;
 import com.newsportal.model.Likes;
 import com.newsportal.model.News;
+import com.newsportal.model.Tag;
 import com.newsportal.model.User;
 import com.newsportal.repository.LikesRepository;
 import com.newsportal.repository.NewsRepository;
@@ -23,8 +24,10 @@ import org.springframework.web.server.ResponseStatusException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 
 @Service
 public class NewsService {
@@ -85,21 +88,28 @@ public class NewsService {
             User author = userRepository.findById(news.getAuthorUserId())
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Author not found"));
 
+            Set<String> tagNames = new HashSet<>();
+            for (Tag tag : news.getTags()) {
+                tagNames.add(tag.getTagName());
+            }
+
             // Convert to DTO
             return new NewsDTO(
+                    news.getId(),
                     author.getUsername(), // Use the username instead of authorUserId
                     news.getTitle(),
                     news.getContent(),
                     news.getImageUrl(),
                     news.getViews(),
                     news.getLikes(),
-                    news.getPublicAt()
+                    news.getPublicAt(),
+                    tagNames
             );
         }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "News not found"));
     }
 
     public List<NewsInfoDTO> searchNewsByKeyword(String keyword) {
-        return newsRepository.searchNewsByKeyword(keyword);
+        return newsRepository.search(keyword);
     }
 
     public List<NewsInfoDTO> searchNewsByTag(String tag) {

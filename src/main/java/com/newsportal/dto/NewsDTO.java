@@ -1,8 +1,12 @@
 package com.newsportal.dto;
 
+import com.newsportal.model.Tag;
+
 import java.time.Instant;
+import java.util.Set;
 
 public class NewsDTO {
+    private Long id;
     private String authorUsername;
     private String title;
     private String content;
@@ -10,14 +14,10 @@ public class NewsDTO {
     private Integer views;
     private Integer likes;
     private Instant publicAt;
+    private Set<String> tags;
 
-    private String tags;
-
-    public NewsDTO(){
-
-    }
-
-    public NewsDTO(String authorUsername, String title, String content, String imageUrl, Integer views, Integer likes, Instant publicAt) {
+    public NewsDTO(Long id, String authorUsername, String title, String content, String imageUrl, Integer views, Integer likes, Instant publicAt, Set<String> tags) {
+        this.id = id;
         this.authorUsername = authorUsername;
         this.title = title;
         this.content = content;
@@ -25,6 +25,15 @@ public class NewsDTO {
         this.views = views;
         this.likes = likes;
         this.publicAt = publicAt;
+        this.tags = tags;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getAuthorUsername() {
@@ -81,5 +90,13 @@ public class NewsDTO {
 
     public void setLikes(Integer likes) {
         this.likes = likes;
+    }
+
+    public Set<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<String> tags) {
+        this.tags = tags;
     }
 }
