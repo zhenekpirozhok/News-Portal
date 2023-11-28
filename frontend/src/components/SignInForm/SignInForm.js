@@ -2,24 +2,28 @@ import React from "react";
 import { Form, Input, Button, Checkbox } from "antd";
 import "./SignInForm.css"; // Import your CSS file
 import { useDispatch } from "react-redux";
-import { signIn } from "../../redux/auth/actions";
-import { useState } from "react";
+import { login } from "../../redux/auth/actions";
+import { useNavigate } from "react-router-dom";
+
 
 const SignInForm = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const onSignIn = (value) => {
-    alert("Received values:", value);
-    // You can add your sign-in logic here
+  const onSignIn = (values) => {
+    const result = values;
+    console.log("Received values:", result);
+    dispatch(login(result.username));
+    navigate("/");
   };
-  
 
   return (
     <div className="signin-container">
       <h2 className="signin-form-title">Sign in to enjoy all functionality!</h2>
       <Form
+      onFinish={onSignIn}
         name="signin-form"
         initialValues={{ remember: true }}
-        onFinish={(value) => onSignIn(value)}
         className="signin-form"
       >
         <Form.Item
@@ -52,7 +56,10 @@ const SignInForm = () => {
           >
             Sign In
           </Button>
-           <a style={{marginTop: '80px'}} href="/register">Register now!</a> or<a href="/signInAdmin"> Sign in as admin</a>
+          <a style={{ marginTop: "80px" }} href="/register">
+            Register now!
+          </a>{" "}
+          or<a href="/signInAdmin"> Sign in as admin</a>
         </Form.Item>
       </Form>
     </div>
