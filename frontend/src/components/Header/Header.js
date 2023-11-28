@@ -9,6 +9,9 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setSearchValue } from "../../redux/search/actions";
 import { useNavigate } from "react-router-dom";
+import { setFilteredNews } from "../../redux/filter/actions";
+import news from "../../mockData/news.json";
+
 
 const { Search } = Input;
 
@@ -20,6 +23,14 @@ const Header = ({user, isSearchVisible, categories }) => {
     key: category.id,
   }));
 
+  const filterNews = (news, searchValue) => {
+    return searchValue
+      ? news.filter((n) =>
+          n.title.toLowerCase().includes(searchValue.toLowerCase())
+        )
+      : news;
+  };
+
   const location = useLocation();
   const navigation = useNavigate();
   const username = useSelector((state) => state.auth.username);
@@ -28,6 +39,7 @@ const Header = ({user, isSearchVisible, categories }) => {
 
   const onSearch = (value) => {
     dispatch(setSearchValue(value));
+    dispatch(setFilteredNews(filterNews(news, value)));
     navigation('/search');
   }
 

@@ -16,7 +16,6 @@ const HomePage = () => {
 
   return (
     <div>
-      <MyComponent />
       <Header user={null} isSearchVisible={true} categories={categories}/>
       <Section>
         <MainNews news={news[0]}/>
