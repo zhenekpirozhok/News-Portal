@@ -6,6 +6,11 @@ import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setSearchValue } from "../../redux/search/actions";
+import { useNavigate } from "react-router-dom";
+
+const { Search } = Input;
 
 const Header = ({user, isSearchVisible, categories }) => {
   const items = categories.map((category) => ({
@@ -16,8 +21,15 @@ const Header = ({user, isSearchVisible, categories }) => {
   }));
 
   const location = useLocation();
+  const navigation = useNavigate();
   const username = useSelector((state) => state.auth.username);
 
+  const dispatch = useDispatch();
+
+  const onSearch = (value) => {
+    dispatch(setSearchValue(value));
+    navigation('/search');
+  }
 
   return (
     <Flex justify="space-between" align="center" className="header-container">
@@ -38,7 +50,7 @@ const Header = ({user, isSearchVisible, categories }) => {
       {/* Flex-box with search field and login link */}
       <Flex className="header-links" gap={40} align="center">
         {isSearchVisible && (
-          <Input placeholder="Search" className="search-input" />
+          <Search placeholder="input search text" onSearch={onSearch} enterButton />
         )}
         {username ? (
           <a href="/profile">{username}</a>
