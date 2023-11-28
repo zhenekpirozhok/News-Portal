@@ -5,6 +5,7 @@ import './NewsCard.css';
 
 const NewsCard = ({ news }) => {
   return (
+    <a href={`/news/${news.id}`}>
     <Card
       hoverable
       className="news-card"
@@ -14,6 +15,7 @@ const NewsCard = ({ news }) => {
       {/* Add more details or customize as needed */}
       <a href={`/news/${news.id}`}>Read more</a>
     </Card>
+    </a>
   );
 };
 

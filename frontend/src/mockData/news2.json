@@ -1,0 +1,786 @@
+[
+  {
+    "category": {
+      "id": 1,
+      "name": "Events"
+    },
+    "id": 11,
+    "title": "Art Exhibition Opening Night",
+    "image": "/images/events11.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.11.2023",
+    "likes": 234,
+    "views": 67890
+  },
+  {
+    "category": {
+      "id": 1,
+      "name": "Events"
+    },
+    "id": 12,
+    "title": "Startup Pitch Competition",
+    "image": "/images/events12.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.12.2023",
+    "likes": 345,
+    "views": 78901
+  },
+  {
+    "category": {
+      "id": 1,
+      "name": "Events"
+    },
+    "id": 13,
+    "title": "Food Festival Delights",
+    "image": "/images/events13.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.13.2023",
+    "likes": 456,
+    "views": 89012
+  },
+  {
+    "category": {
+      "id": 1,
+      "name": "Events"
+    },
+    "id": 14,
+    "title": "Literary Meetup and Book Fair",
+    "image": "/images/events14.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.14.2023",
+    "likes": 567,
+    "views": 90123
+  },
+  {
+    "category": {
+      "id": 1,
+      "name": "Events"
+    },
+    "id": 15,
+    "title": "Music Concert in the Park",
+    "image": "/images/events15.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.15.2023",
+    "likes": 678,
+    "views": 12345
+  },
+  {
+    "category": {
+      "id": 1,
+      "name": "Events"
+    },
+    "id": 16,
+    "title": "Technology Expo 2023",
+    "image": "/images/events16.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.16.2023",
+    "likes": 789,
+    "views": 23456
+  },
+  {
+    "category": {
+      "id": 1,
+      "name": "Events"
+    },
+    "id": 17,
+    "title": "Environmental Sustainability Symposium",
+    "image": "/images/events17.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.17.2023",
+    "likes": 890,
+    "views": 34567
+  },
+  {
+    "category": {
+      "id": 1,
+      "name": "Events"
+    },
+    "id": 18,
+    "title": "Dance Festival Showcase",
+    "image": "/images/events18.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.18.2023",
+    "likes": 901,
+    "views": 45678
+  },
+  {
+    "category": {
+      "id": 1,
+      "name": "Events"
+    },
+    "id": 19,
+    "title": "Space Exploration Seminar",
+    "image": "/images/events19.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.19.2023",
+    "likes": 123,
+    "views": 56789
+  },
+  {
+    "category": {
+      "id": 1,
+      "name": "Events"
+    },
+    "id": 20,
+    "title": "Annual Fashion Week",
+    "image": "/images/events20.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.20.2023",
+    "likes": 234,
+    "views": 67890
+  },
+  {
+    "category": {
+      "id": 1,
+      "name": "Events"
+    },
+    "id": 21,
+    "title": "Community Health Fair",
+    "image": "/images/events21.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.21.2023",
+    "likes": 345,
+    "views": 78901
+  },
+  {
+    "category": {
+      "id": 1,
+      "name": "Events"
+    },
+    "id": 22,
+    "title": "Art and Science Collaboration Exhibit",
+    "image": "/images/events22.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.22.2023",
+    "likes": 456,
+    "views": 89012
+  },
+
+  {
+    "category": {
+      "id": 2,
+      "name": "Technology"
+    },
+    "id": 23,
+    "title": "AI and Machine Learning Summit",
+    "image": "/images/technology23.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.23.2023",
+    "likes": 567,
+    "views": 90123
+  },
+  {
+    "category": {
+      "id": 2,
+      "name": "Technology"
+    },
+    "id": 24,
+    "title": "Blockchain Revolution Conference",
+    "image": "/images/technology24.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.24.2023",
+    "likes": 678,
+    "views": 12345
+  },
+  {
+    "category": {
+      "id": 2,
+      "name": "Technology"
+    },
+    "id": 25,
+    "title": "Future of Robotics Expo",
+    "image": "/images/technology25.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.25.2023",
+    "likes": 789,
+    "views": 23456
+  },
+  {
+    "category": {
+      "id": 2,
+      "name": "Technology"
+    },
+    "id": 26,
+    "title": "Innovations in Cybersecurity Forum",
+    "image": "/images/technology26.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.26.2023",
+    "likes": 890,
+    "views": 34567
+  },
+  {
+    "category": {
+      "id": 2,
+      "name": "Technology"
+    },
+    "id": 27,
+    "title": "Space Technology Symposium",
+    "image": "/images/technology27.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.27.2023",
+    "likes": 901,
+    "views": 45678
+  },
+  {
+    "category": {
+      "id": 2,
+      "name": "Technology"
+    },
+    "id": 28,
+    "title": "Augmented Reality Expo",
+    "image": "/images/technology28.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.28.2023",
+    "likes": 123,
+    "views": 56789
+  },
+  {
+    "category": {
+      "id": 2,
+      "name": "Technology"
+    },
+    "id": 29,
+    "title": "5G Technology Conference",
+    "image": "/images/technology29.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.29.2023",
+    "likes": 234,
+    "views": 67890
+  },
+  {
+    "category": {
+      "id": 2,
+      "name": "Technology"
+    },
+    "id": 30,
+    "title": "Tech Startups Showcase",
+    "image": "/images/technology30.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.30.2023",
+    "likes": 345,
+    "views": 78901
+  },
+  {
+    "category": {
+      "id": 2,
+      "name": "Technology"
+    },
+    "id": 31,
+    "title": "Future of Wearable Tech Expo",
+    "image": "/images/technology31.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.31.2023",
+    "likes": 456,
+    "views": 89012
+  },
+  {
+    "category": {
+      "id": 2,
+      "name": "Technology"
+    },
+    "id": 32,
+    "title": "Tech Entrepreneurship Summit",
+    "image": "/images/technology32.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.01.2023",
+    "likes": 567,
+    "views": 90123
+  },
+  {
+    "category": {
+      "id": 2,
+      "name": "Technology"
+    },
+    "id": 33,
+    "title": "Digital Transformation Forum",
+    "image": "/images/technology33.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.02.2023",
+    "likes": 678,
+    "views": 12345
+  },
+  {
+    "category": {
+      "id": 2,
+      "name": "Technology"
+    },
+    "id": 34,
+    "title": "Emerging Tech Trends Symposium",
+    "image": "/images/technology34.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.03.2023",
+    "likes": 789,
+    "views": 23456
+  },
+
+  {
+    "category": {
+      "id": 6,
+      "name": "Sports"
+    },
+    "id": 23,
+    "title": "Championship Match Excitement",
+    "image": "/images/sports23.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.23.2023",
+    "likes": 567,
+    "views": 90123
+  },
+  {
+    "category": {
+      "id": 6,
+      "name": "Sports"
+    },
+    "id": 24,
+    "title": "Athlete Spotlight: Record-Breaking Performance",
+    "image": "/images/sports24.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.24.2023",
+    "likes": 678,
+    "views": 12345
+  },
+  {
+    "category": {
+      "id": 6,
+      "name": "Sports"
+    },
+    "id": 25,
+    "title": "Upcoming Sporting Events",
+    "image": "/images/sports25.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.25.2023",
+    "likes": 789,
+    "views": 23456
+  },
+  {
+    "category": {
+      "id": 6,
+      "name": "Sports"
+    },
+    "id": 26,
+    "title": "Team Celebrates Victory",
+    "image": "/images/sports26.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.26.2023",
+    "likes": 890,
+    "views": 34567
+  },
+  {
+    "category": {
+      "id": 6,
+      "name": "Sports"
+    },
+    "id": 27,
+    "title": "Fitness Tips for Athletes",
+    "image": "/images/sports27.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.27.2023",
+    "likes": 901,
+    "views": 45678
+  },
+  {
+    "category": {
+      "id": 6,
+      "name": "Sports"
+    },
+    "id": 28,
+    "title": "Interview with Sports Legend",
+    "image": "/images/sports28.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.28.2023",
+    "likes": 123,
+    "views": 56789
+  },
+  {
+    "category": {
+      "id": 6,
+      "name": "Sports"
+    },
+    "id": 29,
+    "title": "Training Camp Highlights",
+    "image": "/images/sports29.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.29.2023",
+    "likes": 234,
+    "views": 67890
+  },
+  {
+    "category": {
+      "id": 6,
+      "name": "Sports"
+    },
+    "id": 30,
+    "title": "Sports Community Event",
+    "image": "/images/sports30.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.30.2023",
+    "likes": 345,
+    "views": 78901
+  },
+  {
+    "category": {
+      "id": 6,
+      "name": "Sports"
+    },
+    "id": 31,
+    "title": "Sportsmanship Awards Ceremony",
+    "image": "/images/sports31.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.31.2023",
+    "likes": 456,
+    "views": 89012
+  },
+  {
+    "category": {
+      "id": 6,
+      "name": "Sports"
+    },
+    "id": 32,
+    "title": "Exclusive Sports Documentary Premiere",
+    "image": "/images/sports32.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.01.2023",
+    "likes": 567,
+    "views": 90123
+  },
+  {
+    "category": {
+      "id": 6,
+      "name": "Sports"
+    },
+    "id": 33,
+    "title": "Fitness Challenge Announcement",
+    "image": "/images/sports33.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.02.2023",
+    "likes": 678,
+    "views": 12345
+  },
+  {
+    "category": {
+      "id": 6,
+      "name": "Sports"
+    },
+    "id": 34,
+    "title": "Sports Science Symposium",
+    "image": "/images/sports34.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.03.2023",
+    "likes": 789,
+    "views": 23456
+  },
+
+  {
+    "category": {
+      "id": 8,
+      "name": "Announcements"
+    },
+    "id": 35,
+    "title": "Important Community Announcement",
+    "image": "/images/announcements35.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.04.2023",
+    "likes": 890,
+    "views": 34567
+  },
+  {
+    "category": {
+      "id": 8,
+      "name": "Announcements"
+    },
+    "id": 36,
+    "title": "Public Service Notification",
+    "image": "/images/announcements36.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.05.2023",
+    "likes": 901,
+    "views": 45678
+  },
+  {
+    "category": {
+      "id": 8,
+      "name": "Announcements"
+    },
+    "id": 37,
+    "title": "Upcoming Event Updates",
+    "image": "/images/announcements37.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.06.2023",
+    "likes": 123,
+    "views": 56789
+  },
+  {
+    "category": {
+      "id": 8,
+      "name": "Announcements"
+    },
+    "id": 38,
+    "title": "Community Survey Results",
+    "image": "/images/announcements38.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.07.2023",
+    "likes": 234,
+    "views": 67890
+  },
+  {
+    "category": {
+      "id": 8,
+      "name": "Announcements"
+    },
+    "id": 39,
+    "title": "New Public Safety Measures",
+    "image": "/images/announcements39.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.08.2023",
+    "likes": 345,
+    "views": 78901
+  },
+  {
+    "category": {
+      "id": 8,
+      "name": "Announcements"
+    },
+    "id": 40,
+    "title": "Government Policy Update",
+    "image": "/images/announcements40.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.09.2023",
+    "likes": 456,
+    "views": 89012
+  },
+  {
+    "category": {
+      "id": 8,
+      "name": "Announcements"
+    },
+    "id": 41,
+    "title": "Community Awards Nominations Open",
+    "image": "/images/announcements41.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.10.2023",
+    "likes": 567,
+    "views": 90123
+  },
+  {
+    "category": {
+      "id": 8,
+      "name": "Announcements"
+    },
+    "id": 42,
+    "title": "City Development Plan Announcement",
+    "image": "/images/announcements42.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.11.2023",
+    "likes": 678,
+    "views": 12345
+  },
+  {
+    "category": {
+      "id": 8,
+      "name": "Announcements"
+    },
+    "id": 43,
+    "title": "Public Health Advisory",
+    "image": "/images/announcements43.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.12.2023",
+    "likes": 789,
+    "views": 23456
+  },
+  {
+    "category": {
+      "id": 8,
+      "name": "Announcements"
+    },
+    "id": 44,
+    "title": "Road Closure Notice",
+    "image": "/images/announcements44.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.13.2023",
+    "likes": 890,
+    "views": 34567
+  },
+  {
+    "category": {
+      "id": 8,
+      "name": "Announcements"
+    },
+    "id": 45,
+    "title": "Environmental Sustainability Initiative",
+    "image": "/images/announcements45.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.14.2023",
+    "likes": 901,
+    "views": 45678
+  },
+  {
+    "category": {
+      "id": 8,
+      "name": "Announcements"
+    },
+    "id": 46,
+    "title": "Public Transportation Expansion Plan",
+    "image": "/images/announcements46.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.15.2023",
+    "likes": 123,
+    "views": 56789
+  },
+
+  {
+    "category": {
+      "id": 3,
+      "name": "Science"
+    },
+    "id": 41,
+    "title": "Breakthroughs in Quantum Computing",
+    "image": "/images/science41.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "03.31.2023",
+    "likes": 654,
+    "views": 87654
+  },
+  {
+    "category": {
+      "id": 3,
+      "name": "Science"
+    },
+    "id": 42,
+    "title": "Mars Rover Mission Update",
+    "image": "/images/science42.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.01.2023",
+    "likes": 789,
+    "views": 76543
+  },
+  {
+    "category": {
+      "id": 3,
+      "name": "Science"
+    },
+    "id": 43,
+    "title": "Genetic Discoveries and Medical Advances",
+    "image": "/images/science43.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.02.2023",
+    "likes": 876,
+    "views": 65432
+  },
+  {
+    "category": {
+      "id": 3,
+      "name": "Science"
+    },
+    "id": 44,
+    "title": "Space Telescope Captures Stunning Images",
+    "image": "/images/science44.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.03.2023",
+    "likes": 987,
+    "views": 54321
+  },
+  {
+    "category": {
+      "id": 3,
+      "name": "Science"
+    },
+    "id": 45,
+    "title": "Climate Change Research Update",
+    "image": "/images/science45.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.04.2023",
+    "likes": 876,
+    "views": 43210
+  },
+  {
+    "category": {
+      "id": 3,
+      "name": "Science"
+    },
+    "id": 46,
+    "title": "Neuroscience Breakthroughs",
+    "image": "/images/science46.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.05.2023",
+    "likes": 765,
+    "views": 32109
+  },
+  {
+    "category": {
+      "id": 3,
+      "name": "Science"
+    },
+    "id": 47,
+    "title": "Environmental Conservation Innovations",
+    "image": "/images/science47.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.06.2023",
+    "likes": 654,
+    "views": 21098
+  },
+  {
+    "category": {
+      "id": 3,
+      "name": "Science"
+    },
+    "id": 48,
+    "title": "Biotechnology Advancements",
+    "image": "/images/science48.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.07.2023",
+    "likes": 543,
+    "views": 10987
+  },
+  {
+    "category": {
+      "id": 3,
+      "name": "Science"
+    },
+    "id": 49,
+    "title": "Astrophysics Symposium Highlights",
+    "image": "/images/science49.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.08.2023",
+    "likes": 432,
+    "views": 9876
+  },
+  {
+    "category": {
+      "id": 3,
+      "name": "Science"
+    },
+    "id": 50,
+    "title": "Health and Wellness Innovations",
+    "image": "/images/science50.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.09.2023",
+    "likes": 321,
+    "views": 8765
+  },
+  {
+    "category": {
+      "id": 3,
+      "name": "Science"
+    },
+    "id": 51,
+    "title": "Renewable Energy Breakthroughs",
+    "image": "/images/science51.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.10.2023",
+    "likes": 210,
+    "views": 7654
+  },
+  {
+    "category": {
+      "id": 3,
+      "name": "Science"
+    },
+    "id": 52,
+    "title": "Innovations in Artificial Intelligence",
+    "image": "/images/science52.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "date": "04.11.2023",
+    "likes": 109,
+    "views": 6543
+  }
+]

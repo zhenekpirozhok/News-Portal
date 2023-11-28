@@ -1,7 +1,7 @@
 // NewsPage.js
 import React from 'react';
 import { Typography } from 'antd';
-import NewsLine from './NewsLine/NewsLine';
+import NewsLine from './OneLine/NewsLine';
 import AdminFilterPanel from './AdminFilterPanel/AdminFilterPanel';
 
 const { Title } = Typography;

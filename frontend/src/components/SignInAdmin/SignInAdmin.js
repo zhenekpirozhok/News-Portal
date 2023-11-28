@@ -1,29 +1,20 @@
 import React from "react";
 import { Form, Input, Button, Checkbox } from "antd";
-import "./SignInForm.css"; // Import your CSS file
-import { useDispatch } from "react-redux";
-import { login } from "../../redux/auth/actions";
-import { useNavigate } from "react-router-dom";
+import "../SignInForm/SignInForm"; // Import your CSS file
 
-
-const SignInForm = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const onSignIn = (values) => {
-    const result = values;
-    console.log("Received values:", result.username);
-    dispatch(login(result.username));
-    navigate("/");
+const SignInAdmin = () => {
+  const onFinish = (values) => {
+    console.log("Received values:", values);
+    // You can add your sign-in logic here
   };
 
   return (
     <div className="signin-container">
-      <h2 className="signin-form-title">Sign in to enjoy all functionality!</h2>
+      <h2 className="signin-form-title">Sign in as Admin</h2>
       <Form
-      onFinish={onSignIn}
         name="signin-form"
         initialValues={{ remember: true }}
+        onFinish={onFinish}
         className="signin-form"
       >
         <Form.Item
@@ -56,14 +47,11 @@ const SignInForm = () => {
           >
             Sign In
           </Button>
-          <a style={{ marginTop: "80px" }} href="/register">
-            Register now!
-          </a>{" "}
-          or<a href="/signInAdmin"> Sign in as admin</a>
+           <a style={{marginTop: '80px'}} href="/register">Register now!</a> or<a href="/signInAdmin"> Sign in as admin</a>
         </Form.Item>
       </Form>
     </div>
   );
 };
 
-export default SignInForm;
+export default SignInAdmin;

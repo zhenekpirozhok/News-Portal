@@ -1,5 +1,5 @@
 // Header.js
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/Header/Header";
 import MainNews from "../components/MainNews/MainNews";
 import users from "../mockData/users.json";
@@ -13,14 +13,28 @@ import { Button } from "antd";
 
 const FilterPage = () => {
   const categories = getCategories(news);
+  const [newsPerPage, setNewsPerPage] = useState(10);
+  const [selectedDate, setSelectedDate] = useState(null);
 
   const onDateFilterChange = (date) => {
-    alert(`Date: ${date}`);
+    setSelectedDate(date);
+  }
+
+  const handleNewsPerPageChange = (newsPerPage) => {
+    setNewsPerPage(newsPerPage);
   };
 
-  const onNewsPerPageChange = (newsPerPage) => {
-    alert(`News per page: ${newsPerPage}`);
+  const loadMoreNews = () => {
+    setNewsPerPage(newsPerPage*2);
   };
+
+  let filteredNews = news.filter((item) => {
+    return item.date === selectedDate;
+  });
+
+  if (!selectedDate) {
+    filteredNews = news.slice(0,newsPerPage);
+  }
 
   const style = {
     backgroundColor: "black",
@@ -30,9 +44,9 @@ const FilterPage = () => {
   };
 
   const styleContainer = {
-    display: 'flex',
-    justifyContent: 'center'
-  }
+    display: "flex",
+    justifyContent: "center",
+  };
 
   return (
     <div>
@@ -40,10 +54,12 @@ const FilterPage = () => {
       <Section>
         <FilterPanel
           onDateFilterChange={onDateFilterChange}
-          onNewsPerPageChange={onNewsPerPageChange}
+          setNewsPerPage={handleNewsPerPageChange}
         />
-        <NewsList newsList={news} />
-        <div style={styleContainer}><Button style={style}> See more </Button></div>
+        <NewsList newsList={filteredNews.slice(0, newsPerPage)} />
+        <div style={styleContainer}>
+          <Button style={style} onClick={loadMoreNews}> See more </Button>
+        </div>
       </Section>
       <Footer />
     </div>
