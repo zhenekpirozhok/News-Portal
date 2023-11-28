@@ -12,7 +12,7 @@ const SignInForm = () => {
 
   const onSignIn = (values) => {
     const result = values;
-    console.log("Received values:", result);
+    console.log("Received values:", result.username);
     dispatch(login(result.username));
     navigate("/");
   };

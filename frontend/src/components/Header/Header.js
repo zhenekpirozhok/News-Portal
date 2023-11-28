@@ -16,7 +16,8 @@ const Header = ({user, isSearchVisible, categories }) => {
   }));
 
   const location = useLocation();
-  const { username } = useSelector((state) => state.auth);
+  const username = useSelector((state) => state.auth.username);
+
 
   return (
     <Flex justify="space-between" align="center" className="header-container">
@@ -40,7 +41,7 @@ const Header = ({user, isSearchVisible, categories }) => {
           <Input placeholder="Search" className="search-input" />
         )}
         {username ? (
-          <a href="/profile">{user.username}</a>
+          <a href="/profile">{username}</a>
         ) : (
           <a href="/login">Sign In</a>
         )}
