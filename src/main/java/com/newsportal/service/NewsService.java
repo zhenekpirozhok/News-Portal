@@ -3,7 +3,10 @@ package com.newsportal.service;
 import com.newsportal.dto.NewsDTO;
 import com.newsportal.dto.NewsInfoDTO;
 import com.newsportal.dto.NewsUpdateDTO;
-import com.newsportal.model.*;
+import com.newsportal.model.Likes;
+import com.newsportal.model.News;
+import com.newsportal.model.NewsTag;
+import com.newsportal.model.User;
 import com.newsportal.repository.LikesRepository;
 import com.newsportal.repository.NewsRepository;
 import com.newsportal.repository.UserRepository;
@@ -21,9 +24,11 @@ import org.springframework.web.server.ResponseStatusException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.time.ZoneId;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 
 @Service
@@ -44,8 +49,9 @@ public class NewsService {
     }
 
     public List<NewsInfoDTO> getTop4TodayNewsByViews(LocalDate date) {
-        LocalDateTime startOfDay = date.atStartOfDay();
-        LocalDateTime endOfDay = date.plusDays(1).atStartOfDay();
+        LocalDate today = LocalDate.now();
+        Instant startOfDay = today.atStartOfDay(ZoneId.systemDefault()).toInstant();
+        Instant endOfDay = today.plusDays(1).atStartOfDay(ZoneId.systemDefault()).toInstant();
         PageRequest pageRequest = PageRequest.of(0, 4);
         return newsRepository.findTop4TodayNewsByViews(startOfDay, endOfDay, pageRequest).getContent();
     }
