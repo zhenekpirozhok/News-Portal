@@ -35,4 +35,6 @@ span {
 
 .like-button:active {
     padding: 0;
+    box-shadow: none;
+    border: none;
 }

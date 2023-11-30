@@ -9,7 +9,7 @@ const NewsCard = ({ news }) => {
     <Card
       hoverable
       className="news-card"
-      cover={<img alt={news.title} src={news.image}/>}
+      cover={<img alt={news.title} src={news.imageUrl}/>}
     >
       <h3>{news.title}</h3>
       {/* Add more details or customize as needed */}
